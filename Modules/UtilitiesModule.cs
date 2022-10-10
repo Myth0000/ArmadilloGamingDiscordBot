@@ -15,7 +15,7 @@ namespace ArmadilloGamingDiscordBot.Modules
         [SlashCommand("armadillo", "Shows a cute picture of an Armadillo.")]
         public async Task HandleArmadillo()
         {
-            await RespondWithFileAsync(@"Images/armadilloGamingIcon.png");
+            await RespondWithFileAsync(ArmadilloImages.RandomArmadilloImagePath());
         }
     }
 }

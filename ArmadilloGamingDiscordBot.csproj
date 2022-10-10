@@ -8,6 +8,1241 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="ArmadilloImages\dfdsfdsimages - 2022-10-10T171748.885.jpg" />
+    <None Remove="ArmadilloImages\im3ages.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.361.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.362.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.366.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.367.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.369.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.371.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.372.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.373.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.375.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.376.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.377.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.378.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.379.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.380.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.384.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.385.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.387.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.401.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.402.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.425.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.437.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.454.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.456.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.457.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.467.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.469.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.470.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.471.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.473.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.475.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.511.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.512.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.522.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.544.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.559.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.585.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.598.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.608.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.609.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.610.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.618.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.691.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.705.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.706.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.720.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.721.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.732.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.734.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.753.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.764.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.773.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.774.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.778.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.779.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.789.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.790.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.791.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.792.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.793.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.799.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.800.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.824.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.827.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.886.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.891.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.893.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.901.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.902.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.904.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.912.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.914.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.918.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.921.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.922.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.923.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.927.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.930.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.949.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.950.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.953.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.954.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.955.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.956.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.961.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.962.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.970.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.972.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.973.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.974.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.975.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.976.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.983.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.984.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.989.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.990.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.991.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.997.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.998.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171748.999.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.007.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.009.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.012.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.013.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.018.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.019.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.025.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.029.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.039.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.040.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.041.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.044.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.045.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.047.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.048.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.051.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.052.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.054.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.055.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.059.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.060.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.062.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.063.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.066.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.067.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T171749.071.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.830.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.836.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.868.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.876.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.881.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.882.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.891.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.904.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.911.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.928.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.932.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.935.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.938.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.939.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.940.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.945.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.953.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.962.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172152.964.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.038.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.043.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.047.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.048.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.050.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.051.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.052.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.054.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.057.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.058.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.060.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.065.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.070.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.072.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.074.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.075.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.105.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.106.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.110.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.113.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.119.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.120.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.122.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.123.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.129.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.130.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.134.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.138.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.147.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.155.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.166.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.183.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.354.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.367.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.371.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.374.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.375.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.384.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.385.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.387.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.388.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.389.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.397.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.398.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.399.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.400.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.404.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.408.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.415.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.418.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.422.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.423.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.424.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.435.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.436.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.438.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.439.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.440.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.441.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.448.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.449.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.455.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.461.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.464.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.465.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.472.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.474.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.478.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.479.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.487.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.488.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.489.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.496.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.499.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.502.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.514.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.515.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.516.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.517.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.545.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.546.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.551.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.563.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.564.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.571.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.581.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.582.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.583.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.584.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.585.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.588.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.605.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.607.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.608.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.642.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.643.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.648.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.649.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.655.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.656.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.704.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.706.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.711.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.712.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.713.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.721.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.727.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.730.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.731.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.745.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.747.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.753.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.755.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.791.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.792.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.793.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.795.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.796.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.797.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.798.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.827.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.876.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.880.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.882.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.892.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.894.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.897.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.928.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.929.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.930.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.935.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.936.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.990.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172153.991.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.054.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.060.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.061.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.065.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.070.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.071.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.072.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.076.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.103.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.117.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.195.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.196.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.202.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.213.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.214.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.215.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.216.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.217.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.222.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.223.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.224.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.226.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.227.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.228.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.229.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.234.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.248.jpg" />
+    <None Remove="ArmadilloImages\images - 2022-10-10T172154.249.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ArmadilloImages\im3ages.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.361.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.362.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.366.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.367.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.369.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.371.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.372.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.373.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.375.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.376.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.377.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.378.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.379.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.380.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.384.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.385.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.387.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.401.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.402.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.425.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.437.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.454.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.456.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.457.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.467.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.469.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.470.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.471.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.473.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.475.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.511.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.512.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.522.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.544.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.559.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.585.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.598.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.608.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.609.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.610.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.618.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.691.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.705.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.706.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.720.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.721.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.732.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.734.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.753.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.764.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.773.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.774.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.778.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.779.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.789.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.790.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.791.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.792.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.793.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.799.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.800.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.824.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.827.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\dfdsfdsimages - 2022-10-10T171748.885.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.886.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.891.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.893.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.901.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.902.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.904.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.912.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.914.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.918.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.921.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.922.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.923.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.927.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.930.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.949.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.950.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.953.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.954.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.955.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.956.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.961.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.962.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.970.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.972.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.973.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.974.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.975.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.976.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.983.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.984.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.989.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.990.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.991.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.997.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.998.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171748.999.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.007.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.009.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.012.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.013.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.018.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.019.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.025.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.029.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.039.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.040.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.041.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.044.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.045.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.047.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.048.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.051.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.052.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.054.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.055.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.059.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.060.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.062.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.063.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.066.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.067.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T171749.071.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.830.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.836.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.868.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.876.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.881.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.882.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.891.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.904.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.911.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.928.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.932.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.935.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.938.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.939.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.940.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.945.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.953.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.962.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172152.964.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.038.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.043.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.047.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.048.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.050.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.051.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.052.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.054.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.057.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.058.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.060.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.065.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.070.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.072.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.074.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.075.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.105.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.106.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.110.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.113.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.119.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.120.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.122.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.123.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.129.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.130.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.134.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.138.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.147.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.155.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.166.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.183.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.354.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.367.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.371.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.374.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.375.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.384.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.385.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.387.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.388.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.389.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.397.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.398.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.399.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.400.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.404.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.408.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.415.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.418.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.422.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.423.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.424.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.435.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.436.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.438.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.439.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.440.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.441.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.448.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.449.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.455.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.461.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.464.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.465.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.472.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.474.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.478.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.479.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.487.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.488.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.489.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.496.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.499.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.502.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.514.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.515.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.516.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.517.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.545.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.546.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.551.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.563.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.564.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.571.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.581.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.582.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.583.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.584.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.585.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.588.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.605.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.607.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.608.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.642.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.643.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.648.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.649.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.655.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.656.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.704.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.706.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.711.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.712.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.713.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.721.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.727.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.730.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.731.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.745.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.747.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.753.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.755.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.791.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.792.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.793.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.795.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.796.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.797.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.798.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.827.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.876.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.880.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.882.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.892.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.894.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.897.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.928.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.929.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.930.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.935.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.936.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.990.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172153.991.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.054.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.060.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.061.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.065.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.070.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.071.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.072.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.076.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.103.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.117.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.195.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.196.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.202.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.213.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.214.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.215.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.216.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.217.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.222.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.223.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.224.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.226.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.227.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.228.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.229.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.234.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.248.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ArmadilloImages\images - 2022-10-10T172154.249.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\armadilloGamingIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
