@@ -44,7 +44,8 @@ namespace ArmadilloGamingDiscordBot
             _client.Ready += async () =>
             {
                 Console.WriteLine("Bot is ready!");
-                await slashCommands.RegisterCommandsToGuildAsync(810214297207570452, deleteMissing: true);
+                await slashCommands.RegisterCommandsToGuildAsync(810214297207570452, deleteMissing: true); // test server
+               // await slashCommands.RegisterCommandsToGuildAsync(892701424218148905, deleteMissing: true); // ArmadilloGaming Server
             };
 
             await _client.LoginAsync(TokenType.Bot, "MTAyODc1NTQyNzM4ODgyOTc0Nw.GNH56Z.cwQ1JnziVTT3QZewN-oNodIQv-O6pUHRIygVmg");
