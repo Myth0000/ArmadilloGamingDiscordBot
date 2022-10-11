@@ -1250,6 +1250,7 @@
 
   <ItemGroup>
     <PackageReference Include="Discord.Net" Version="3.8.1" />
+    <PackageReference Include="Hypixel.NET" Version="1.0.9.4" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0-rc.1.22426.10" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0-rc.1.22426.10" />
   </ItemGroup>
