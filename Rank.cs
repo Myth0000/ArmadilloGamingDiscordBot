@@ -67,32 +67,15 @@ namespace ArmadilloGamingDiscordBot
             MaxExp = Convert.ToInt32(Math.Floor(MaxExp * 1.1));
         }
 
-        public void DecreaseLevel(int amount = 1) => Level -= amount;
-
-        public void IncreaseExp(int amount)
-        {
-            CurrentExp += amount;
-            TotalExp += amount;
-            
-        }
-
-        public void DecreaseExp(int amount) => _currentExp -= amount;
-
-        // Resets \\
-        public void ResetLevel() => Level = 0;
-        public void ResetCurrentExp() => CurrentExp = 0;
-        public void ResetMaxExp() => MaxExp = 0;
-        public void ResetTotalExp() => TotalExp = 0;
-
         /// <summary>
         /// Resets all properties of this instance.
         /// </summary>
         public void ResetRank()
         {
-            ResetLevel();
-            ResetCurrentExp();
-            ResetTotalExp();
-            ResetMaxExp();
+            Level = 0;
+            CurrentExp = 0;
+            TotalExp = 0;
+            MaxExp = 10;
         }
 
 
@@ -102,6 +85,7 @@ namespace ArmadilloGamingDiscordBot
         {
             if (CurrentExp >= MaxExp)
             {
+                TotalExp += CurrentExp;
                 CurrentExp -= MaxExp;
                 IncreaseLevel();
             }
