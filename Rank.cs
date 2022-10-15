@@ -15,7 +15,7 @@ namespace ArmadilloGamingDiscordBot
         private int _currentExp = 0;
         private int _maxExp = 10;
         private int _totalExp = 0;
-
+        private static int setterInvokedInCurrentExpCount = 0; // keeps count of how many times setter invoked ( setter in properties invokes 3 times for some reason?? )
         /// <summary>
         /// The current level.
         /// </summary>
@@ -33,10 +33,12 @@ namespace ArmadilloGamingDiscordBot
             get { return _currentExp; }
             set
             {
-                if(_currentExp != value)
+                _currentExp = value;
+                setterInvokedInCurrentExpCount++;
+                if(CurrentExp >= MaxExp && setterInvokedInCurrentExpCount == 3)
                 {
-                    _currentExp = value;
-                    CheckForLevelUp();
+                    setterInvokedInCurrentExpCount = 0;
+                    Console.WriteLine($"Ready to lvl up! {CurrentExp}/{MaxExp}");
                 }
             }
         }
@@ -60,13 +62,6 @@ namespace ArmadilloGamingDiscordBot
         }
 
 
-        // Increment/Decrememnt Methods of Properties \\
-        public void IncreaseLevel(int amount = 1)
-        {
-            Level += amount;
-            MaxExp = Convert.ToInt32(Math.Floor(MaxExp * 1.1));
-        }
-
         /// <summary>
         /// Resets all properties of this instance.
         /// </summary>
@@ -76,19 +71,6 @@ namespace ArmadilloGamingDiscordBot
             CurrentExp = 0;
             TotalExp = 0;
             MaxExp = 10;
-        }
-
-
-
-        // Helper Methods
-        public void CheckForLevelUp()
-        {
-            if (CurrentExp >= MaxExp)
-            {
-                TotalExp += CurrentExp;
-                CurrentExp -= MaxExp;
-                IncreaseLevel();
-            }
         }
     }
 }

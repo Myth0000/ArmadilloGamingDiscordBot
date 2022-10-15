@@ -29,7 +29,7 @@ namespace ArmadilloGamingDiscordBot
                     {
                         if (user.ExistsInUserJson())
                         {
-                            user.Rank.CurrentExp = 500;
+                            user.Rank.CurrentExp = 3 + new Random().Next(0, 100);
                         }
                     }
                     
