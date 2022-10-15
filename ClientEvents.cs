@@ -17,6 +17,9 @@ namespace ArmadilloGamingDiscordBot
         {
             try
             {
+
+                if(message.Type == MessageType.ApplicationCommand) { return; } // if the message is used to run a slash command then return
+
                 List<User> users = JsonSerializer.Deserialize<List<User>>(File.ReadAllText(DirectoryPaths.UsersJsonPath));
 
                if (users.Count == 0)
@@ -29,7 +32,8 @@ namespace ArmadilloGamingDiscordBot
                     {
                         if (user.ExistsInUserJson())
                         {
-                            user.Rank.CurrentExp = 3 + new Random().Next(0, 100);
+                            user.Rank.CurrentExp += new Random().Next(1, 4);
+                            break;
                         }
                     }
                     

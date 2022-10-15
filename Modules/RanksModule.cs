@@ -14,18 +14,39 @@ namespace ArmadilloGamingDiscordBot.Modules
     {
         
 
-        [SlashCommand("rank", "Displays the user's current rank.")]
+        [SlashCommand("level", "Displays the user's current rank.")]
         public async Task HandleRank()
         {
             List<User> users = JsonSerializer.Deserialize<List<User>>(File.ReadAllText(DirectoryPaths.UsersJsonPath));
 
+            var embedMsg = ReturnEmbedMessage();
+            if(embedMsg != null) { await RespondAsync(embed: embedMsg); return; }
+
+            // if user is not found in the Users.Json file then add them to it
             users.Add(new User(Context.User.Id));
-            File.WriteAllText(DirectoryPaths.UsersJsonPath, JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true }));
-            /*User[] users = JsonSerializer.Deserialize<User[]>(File.ReadAllText(DirectoryPaths.UsersJsonPath)); 
-            foreach(User user in users)
+            File.WriteAllText(DirectoryPaths.UsersJsonPath, JsonSerializer.Serialize(users, new JsonSerializerOptions() { WriteIndented=true}));
+
+            await RespondAsync(embed: ReturnEmbedMessage());
+
+            Embed ReturnEmbedMessage()
             {
-                await RespondAsync(user.UserId.ToString());
-            }*/
+                foreach (User user in users)
+                {
+                    if (user.UserId == Context.User.Id)
+                    {
+
+                        Embed rankEmbed = new EmbedBuilder()
+                            .WithAuthor($"{Context.User.Username}#{Context.User.Discriminator}", iconUrl: Context.User.GetAvatarUrl())
+                            .AddField(new EmbedFieldBuilder() { Name = $"Level {user.Rank.Level}", Value = $"{user.Rank.CurrentExp}/{user.Rank.MaxExp}" })
+                            .AddField(new EmbedFieldBuilder() { Name = "Total Exp", Value = user.Rank.TotalExp })
+                            .WithCurrentTimestamp()
+                            .Build();
+
+                        return rankEmbed;
+                    }
+                }
+                return null;
+            }
         }
     }
 }

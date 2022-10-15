@@ -35,6 +35,7 @@ namespace ArmadilloGamingDiscordBot
             {
                 _currentExp = value;
                 setterInvokedInCurrentExpCount++;
+                Console.WriteLine(setterInvokedInCurrentExpCount);
                 if(CurrentExp >= MaxExp && setterInvokedInCurrentExpCount == 3)
                 {
                     setterInvokedInCurrentExpCount = 0;
