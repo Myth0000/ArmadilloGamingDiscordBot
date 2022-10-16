@@ -1,0 +1,4 @@
+﻿Equation for Max Level :              y = 10 * (1.1^z)            which is the same as -->         NewMaxExp = 10 * (1.1^Level)
+WHERE 10 is the starting maxExp at level 0
+WHERE 1.1 is how much the current max exp is multiplied by
+

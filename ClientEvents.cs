@@ -30,9 +30,10 @@ namespace ArmadilloGamingDiscordBot
                 {
                     foreach (User user in users)
                     {
-                        if (user.ExistsInUserJson())
+                        if (user.UserId == message.Author.Id)
                         {
-                            user.Rank.CurrentExp += new Random().Next(1, 4);
+                            user.Rank = RankSystem.UpdateRankOnMessageSent(user.Rank, message);
+                            Console.WriteLine("MESSAGE RECIEVED");
                             break;
                         }
                     }
