@@ -7,11 +7,16 @@ using System.Text.Json;
 using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
+using MongoDB.Driver;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 
 namespace ArmadilloGamingDiscordBot
 {
     public static class RankSystem
     {
+
+        
         public static void displayRankProperties(Rank rank)
         {
             Console.WriteLine($"Level: {rank.Level}\nExp: {rank.CurrentExp}/{rank.MaxExp}\nTotal Exp: {rank.TotalExp}");
@@ -23,30 +28,32 @@ namespace ArmadilloGamingDiscordBot
         /// <summary>
         /// Updates the rank to make sure level ups, etc. are happening.
         /// </summary>
-        public static Rank UpdateRankOnMessageSent(Rank rank, SocketMessage message)
+        public static void UpdateRankOnMessageSent(MongoClient mongoClient, ulong UserId)
         {
-            // updates currentExp & totalExp
-            int expEarned = new Random().Next(10, 50);
-            rank.CurrentExp += expEarned;
-            rank.TotalExp += expEarned;
 
-            // Level up
-            if (rank.CurrentExp >= rank.MaxExp)
-            {
-                int count = Convert.ToInt32(Math.Floor(Convert.ToDecimal(rank.CurrentExp / rank.MaxExp)));
-                Console.WriteLine(count);
-                while(count-- > 0)
-                {
-                    Console.WriteLine("in while loop");
-                    rank.Level++;
-                    rank.CurrentExp -= rank.MaxExp;
-                    Console.WriteLine(rank.CurrentExp);
-                    rank.MaxExp = Convert.ToInt32(Math.Floor(1.1 * rank.MaxExp));
-                    message.Channel.SendMessageAsync($"{message.Author.Mention} has leveled up to level {rank.Level}!");
-                }
-            }
-            displayRankProperties(rank);
-            return rank;
+            //var user = new User(UserId).ToBsonDocument<User>();
+            var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", UserId);
+
+            var userBsonDoc = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User").Find(userFilter).First();
+            User user = BsonSerializer.Deserialize<User>(userBsonDoc);
+
+
+            Console.WriteLine(user);
+            Console.WriteLine("Message Recieved!");
+        }
+
+
+
+
+        /// <summary>
+        /// Adds the user to the UserDatabase.
+        /// </summary>
+        public static void CreateNewUser(MongoClient mongoClient, ulong UserId)
+        {
+            var user = new User(UserId).ToBsonDocument<User>();
+
+            var usersCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
+            usersCollection.InsertOne(user);
         }
 
 

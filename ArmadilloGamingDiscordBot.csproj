@@ -316,7 +316,6 @@
     <None Remove="ArmadilloImages\images - 2022-10-10T172154.234.jpg" />
     <None Remove="ArmadilloImages\images - 2022-10-10T172154.248.jpg" />
     <None Remove="ArmadilloImages\images - 2022-10-10T172154.249.jpg" />
-    <None Remove="Users.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -1247,20 +1246,15 @@
     <Content Include="Images\armadilloGamingIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Users.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Discord.Net" Version="3.8.1" />
     <PackageReference Include="Hypixel.NET" Version="1.0.9.4" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0-rc.1.22426.10" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0-rc.1.22426.10" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="JsonFiles\" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0-rc.2.22472.3" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0-rc.2.22472.3" />
+    <PackageReference Include="MongoDB.Bson" Version="2.18.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.18.0" />
   </ItemGroup>
 
 </Project>

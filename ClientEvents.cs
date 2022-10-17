@@ -7,42 +7,31 @@ using Discord;
 using Discord.Interactions;
 using Discord.WebSocket;
 using System.Text.Json;
+using MongoDB.Driver;
+using MongoDB.Bson;
 
 
 namespace ArmadilloGamingDiscordBot
 {
-    public static class ClientEvents
+    public class ClientEvents
     {
-        public static async Task MessageRecievedEvent(SocketMessage message)
+
+        MongoClient mongoClient = new MongoClient("mongodb+srv://Myth0000:JhgZ5shGWcxj3kEj@usercluster.djfruor.mongodb.net/?retryWrites=true&w=majority");
+
+        public async Task MessageRecievedEvent(SocketMessage message)
         {
+
+            if(message.Type == MessageType.ApplicationCommand) { return; } // if the message is used to run a slash command then return
+
             try
             {
-
-                if(message.Type == MessageType.ApplicationCommand) { return; } // if the message is used to run a slash command then return
-
-                List<User> users = JsonSerializer.Deserialize<List<User>>(File.ReadAllText(DirectoryPaths.UsersJsonPath));
-
-               if (users.Count == 0)
-                {
-                    users.Add(new User(message.Author.Id));
-                }
-                else
-                {
-                    foreach (User user in users)
-                    {
-                        if (user.UserId == message.Author.Id)
-                        {
-                            user.Rank = RankSystem.UpdateRankOnMessageSent(user.Rank, message);
-                            Console.WriteLine("MESSAGE RECIEVED");
-                            break;
-                        }
-                    }
-                    
-                }
-                    
-               File.WriteAllText(DirectoryPaths.UsersJsonPath, JsonSerializer.Serialize(users, new JsonSerializerOptions { WriteIndented = true }));
+                RankSystem.UpdateRankOnMessageSent(mongoClient, message.Author.Id);
             }
-            catch(Exception ex) { Console.WriteLine(ex.ToString()); }
+            catch (InvalidOperationException ex) // if user doesn't exist in UserDatabase 
+            {
+                Console.WriteLine("New user added to the database.");
+                RankSystem.CreateNewUser(mongoClient, message.Author.Id);
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using Discord.WebSocket;
 using Discord.Interactions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Driver;
 
 namespace ArmadilloGamingDiscordBot
 {
@@ -31,6 +32,8 @@ namespace ArmadilloGamingDiscordBot
 
         public async Task RunAsync(IHost host)
         {
+            ClientEvents clientEvents = new();
+
             using IServiceScope serviceScope = host.Services.CreateScope();
             IServiceProvider provider = serviceScope.ServiceProvider;
 
@@ -40,7 +43,7 @@ namespace ArmadilloGamingDiscordBot
 
             _client.Log += async (LogMessage msg) => { Console.WriteLine(msg); };
             slashCommands.Log += async (LogMessage msg) => { Console.WriteLine(msg); };
-            _client.MessageReceived += ClientEvents.MessageRecievedEvent;
+            _client.MessageReceived += clientEvents.MessageRecievedEvent;
 
 
             _client.Ready += async () =>
