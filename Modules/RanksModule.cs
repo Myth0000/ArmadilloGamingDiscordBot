@@ -7,45 +7,42 @@ using Discord.Interactions;
 using Discord.WebSocket;
 using Discord;
 using System.Text.Json;
+using MongoDB.Driver;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 
 namespace ArmadilloGamingDiscordBot.Modules
 {
     public class RanksModule : InteractionModuleBase<SocketInteractionContext>
     {
-        
+        private MongoClient mongoClient = new("mongodb+srv://Myth0000:JhgZ5shGWcxj3kEj@usercluster.djfruor.mongodb.net/?retryWrites=true&w=majority");
 
         [SlashCommand("level", "Displays the user's current rank.")]
         public async Task HandleRank()
         {
-            List<User> users = JsonSerializer.Deserialize<List<User>>(File.ReadAllText(DirectoryPaths.UsersJsonPath));
-
-            var embedMsg = ReturnEmbedMessage();
-            if(embedMsg != null) { await RespondAsync(embed: embedMsg); return; }
-
-            // if user is not found in the Users.Json file then add them to it
-            users.Add(new User(Context.User.Id));
-            File.WriteAllText(DirectoryPaths.UsersJsonPath, JsonSerializer.Serialize(users, new JsonSerializerOptions() { WriteIndented=true}));
-
-            await RespondAsync(embed: ReturnEmbedMessage());
-
-            Embed ReturnEmbedMessage()
+            try
             {
-                foreach (User user in users)
-                {
-                    if (user.UserId == Context.User.Id)
-                    {
+                await RespondAsync(embed: BuildRankEmbed());
+            }
+            catch (InvalidOperationException ex) // user doesn't exist in database
+            {
+                RankSystem.CreateNewUser(mongoClient, Context.User.Id);
+                await RespondAsync(embed: BuildRankEmbed());
+            }
 
-                        Embed rankEmbed = new EmbedBuilder()
-                            .WithAuthor($"{Context.User.Username}#{Context.User.Discriminator}", iconUrl: Context.User.GetAvatarUrl())
-                            .AddField(new EmbedFieldBuilder() { Name = $"Level {user.Rank.Level}", Value = $"{user.Rank.CurrentExp}/{user.Rank.MaxExp}" })
-                            .AddField(new EmbedFieldBuilder() { Name = "Total Exp", Value = user.Rank.TotalExp })
-                            .WithCurrentTimestamp()
-                            .Build();
+            Embed BuildRankEmbed()
+            {
+                var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
+                var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", Context.User.Id);
 
-                        return rankEmbed;
-                    }
-                }
-                return null;
+                Rank userRank = BsonSerializer.Deserialize<User>(userCollection.Find<BsonDocument>(userFilter).First()).Rank;
+
+                return new EmbedBuilder()
+                    .WithAuthor($"{Context.User.Username}#{Context.User.Discriminator}", iconUrl: Context.User.GetAvatarUrl())
+                    .AddField(new EmbedFieldBuilder() { Name = $"Level {userRank.Level}", Value = $"{userRank.CurrentExp}/{userRank.MaxExp}" })
+                    .AddField(new EmbedFieldBuilder() { Name = "Total Exp", Value = userRank.TotalExp })
+                    .WithCurrentTimestamp()
+                    .Build();
             }
         }
     }
