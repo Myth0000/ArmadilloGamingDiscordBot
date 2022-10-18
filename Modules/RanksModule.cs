@@ -45,5 +45,37 @@ namespace ArmadilloGamingDiscordBot.Modules
                     .Build();
             }
         }
+
+
+
+
+        [SlashCommand("leaderboard", "Shows a list of the top 10 highest level members in the server.")]
+        public async Task HandleLeaderboard()
+        {
+            var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
+            var sortLevel = Builders<BsonDocument>.Sort.Descending("Rank.TotalExp");
+            var userBsonList = userCollection.Find(new BsonDocument()).Sort(sortLevel).Limit(10).ToList();
+            var users = userBsonList.Select(item => BsonSerializer.Deserialize<User>(item)).ToList();
+            string topTenHighestLeveledUsers = "";
+
+            for(int index = 0; index < users.Count; index++)
+            {
+                if(index == users.Count - 1)
+                {
+                    topTenHighestLeveledUsers += $"**{index + 1}.** {Context.Guild.GetUser(users[index].UserId).Mention} ▸ {users[index].Rank.Level}";
+                    break;
+                }
+                topTenHighestLeveledUsers += $"**{index + 1}.** {Context.Guild.GetUser(users[index].UserId).Mention} ▸ {users[index].Rank.Level}\n";
+
+            }
+
+
+            EmbedBuilder leaderboardEmbed = new EmbedBuilder()
+                .WithAuthor("Leaderboard", iconUrl: Context.Guild.IconUrl)
+                .AddField(new EmbedFieldBuilder() { Name="Top 10", Value= topTenHighestLeveledUsers })
+                .WithCurrentTimestamp();
+
+            await RespondAsync(embed: leaderboardEmbed.Build());
+        }
     }
 }
