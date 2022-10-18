@@ -25,7 +25,7 @@ namespace ArmadilloGamingDiscordBot
 
             try
             {
-                RankSystem.UpdateRankOnMessageSent(mongoClient, message.Author.Id);
+                RankSystem.UpdateRankOnMessageSent(mongoClient, message);
             }
             catch (InvalidOperationException ex) // if user doesn't exist in UserDatabase 
             {

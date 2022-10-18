@@ -28,18 +28,31 @@ namespace ArmadilloGamingDiscordBot
         /// <summary>
         /// Updates the rank to make sure level ups, etc. are happening.
         /// </summary>
-        public static void UpdateRankOnMessageSent(MongoClient mongoClient, ulong UserId)
+        public static void UpdateRankOnMessageSent(MongoClient mongoClient, SocketMessage message)
         {
+            GiveUserExp(mongoClient, message.Author.Id);
 
-            //var user = new User(UserId).ToBsonDocument<User>();
-            var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", UserId);
+            // Level up code below
+            var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", message.Author.Id);
 
-            var userBsonDoc = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User").Find(userFilter).First();
-            User user = BsonSerializer.Deserialize<User>(userBsonDoc);
+            var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
+            Rank userRank = BsonSerializer.Deserialize<User>(userCollection.Find<BsonDocument>(userFilter).First()).Rank;
 
+            if(userRank.CurrentExp >= userRank.MaxExp)
+            {
+                // Cexp -= Mexp
 
-            Console.WriteLine(user);
-            Console.WriteLine("Message Recieved!");
+                var updateCurrentExp = Builders<BsonDocument>.Update.Set("Rank.CurrentExp", (userRank.CurrentExp - userRank.MaxExp));
+                var updateMaxExp = Builders<BsonDocument>.Update.Set("Rank.MaxExp", Math.Floor(userRank.MaxExp * 1.1));
+                var updateLevel = Builders<BsonDocument>.Update.Set("Rank.Level", ++userRank.Level);
+
+                userCollection.UpdateOne(userFilter, updateCurrentExp);
+                userCollection.UpdateOne(userFilter, updateMaxExp);
+                userCollection.UpdateOne(userFilter, updateLevel);
+
+                message.Channel.SendMessageAsync($"{message.Author.Mention} has leveled up to level {userRank.Level}!");
+            }
+
         }
 
 
@@ -48,12 +61,32 @@ namespace ArmadilloGamingDiscordBot
         /// <summary>
         /// Adds the user to the UserDatabase.
         /// </summary>
-        public static void CreateNewUser(MongoClient mongoClient, ulong UserId)
+        public static void CreateNewUser(MongoClient mongoClient, ulong userId)
         {
-            var user = new User(UserId).ToBsonDocument<User>();
+            var user = new User(userId).ToBsonDocument<User>();
 
             var usersCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
             usersCollection.InsertOne(user);
+        }
+
+
+
+
+        /// <summary>
+        /// Gives exp to the User.
+        /// </summary>
+        public static void GiveUserExp(MongoClient mongoClient, ulong userId)
+        {
+            var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
+            var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", userId);
+            User user = BsonSerializer.Deserialize<User>(userCollection.Find<BsonDocument>(userFilter).First());
+
+            int expGained = new Random().Next(1, 4);
+            var updateExp = Builders<BsonDocument>.Update.Set("Rank.CurrentExp", (user.Rank.CurrentExp + expGained));
+            var updateTotalExp = Builders<BsonDocument>.Update.Set("Rank.TotalExp", (user.Rank.TotalExp + expGained));
+
+            userCollection.UpdateOne(userFilter, updateExp);
+            userCollection.UpdateOne(userFilter, updateTotalExp);
         }
 
 
