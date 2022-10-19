@@ -18,7 +18,7 @@ namespace ArmadilloGamingDiscordBot.Modules
         private MongoClient mongoClient = new("mongodb+srv://Myth0000:JhgZ5shGWcxj3kEj@usercluster.djfruor.mongodb.net/?retryWrites=true&w=majority");
 
         [SlashCommand("level", "Displays the user's current rank.")]
-        public async Task HandleRank()
+        public async Task HandleRank(SocketUser user)
         {
             try
             {
@@ -33,12 +33,12 @@ namespace ArmadilloGamingDiscordBot.Modules
             Embed BuildRankEmbed()
             {
                 var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
-                var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", Context.User.Id);
+                var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", user.Id);
 
                 Rank userRank = BsonSerializer.Deserialize<User>(userCollection.Find<BsonDocument>(userFilter).First()).Rank;
 
                 return new EmbedBuilder()
-                    .WithAuthor($"{Context.User.Username}#{Context.User.Discriminator}", iconUrl: Context.User.GetAvatarUrl())
+                    .WithAuthor($"{user.Username}#{user.Discriminator}", iconUrl: user.GetAvatarUrl() ?? user.GetDefaultAvatarUrl())
                     .AddField(new EmbedFieldBuilder() { Name = $"Level {userRank.Level}", Value = $"{userRank.CurrentExp}/{userRank.MaxExp}" })
                     .AddField(new EmbedFieldBuilder() { Name = "Total Exp", Value = userRank.TotalExp })
                     .WithCurrentTimestamp()
@@ -72,7 +72,7 @@ namespace ArmadilloGamingDiscordBot.Modules
 
             EmbedBuilder leaderboardEmbed = new EmbedBuilder()
                 .WithAuthor("Leaderboard", iconUrl: Context.Guild.IconUrl)
-                .AddField(new EmbedFieldBuilder() { Name="Top 10", Value= topTenHighestLeveledUsers })
+                .AddField(new EmbedFieldBuilder() { Name=$"Top {users.Count}", Value= topTenHighestLeveledUsers })
                 .WithCurrentTimestamp();
 
             await RespondAsync(embed: leaderboardEmbed.Build());
