@@ -21,7 +21,8 @@ namespace ArmadilloGamingDiscordBot
         public async Task MessageRecievedEvent(SocketMessage message)
         {
 
-            if(message.Type == MessageType.ApplicationCommand) { return; } // if the message is used to run a slash command then return
+            // If the message is a slash command OR the message was in DMs, return.
+            if((message.Type == MessageType.ApplicationCommand) || (message.Channel.ToString().First<char>() == '@')) { return; }
 
             try
             {
