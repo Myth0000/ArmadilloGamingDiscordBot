@@ -18,15 +18,16 @@ namespace ArmadilloGamingDiscordBot.Modules
         private MongoClient mongoClient = new("mongodb+srv://Myth0000:JhgZ5shGWcxj3kEj@usercluster.djfruor.mongodb.net/?retryWrites=true&w=majority");
 
         [SlashCommand("level", "Displays the user's current rank.")]
-        public async Task HandleRank(SocketUser user)
+        public async Task HandleRank(SocketUser user = null)
         {
+            if(user == null) { user = Context.User; }
             try
             {
                 await RespondAsync(embed: BuildRankEmbed());
             }
             catch (InvalidOperationException ex) // user doesn't exist in database
             {
-                RankSystem.CreateNewUser(mongoClient, Context.User.Id);
+                RankSystem.CreateNewUser(mongoClient, user.Id);
                 await RespondAsync(embed: BuildRankEmbed());
             }
 
@@ -39,8 +40,8 @@ namespace ArmadilloGamingDiscordBot.Modules
 
                 return new EmbedBuilder()
                     .WithAuthor($"{user.Username}#{user.Discriminator}", iconUrl: user.GetAvatarUrl() ?? user.GetDefaultAvatarUrl())
-                    .AddField(new EmbedFieldBuilder() { Name = $"Level {userRank.Level}", Value = $"{userRank.CurrentExp}/{userRank.MaxExp}" })
-                    .AddField(new EmbedFieldBuilder() { Name = "Total Exp", Value = userRank.TotalExp })
+                    .AddField(new EmbedFieldBuilder() { Name = $"Level {userRank.Level}", Value = $"{GuildEmotes.armadillo} {userRank.CurrentExp}/{userRank.MaxExp}" })
+                    .AddField(new EmbedFieldBuilder() { Name = "Total Exp", Value = $"{GuildEmotes.armadillo} {userRank.TotalExp}" })
                     .WithCurrentTimestamp()
                     .Build();
             }
@@ -62,11 +63,10 @@ namespace ArmadilloGamingDiscordBot.Modules
             {
                 if(index == users.Count - 1)
                 {
-                    topTenHighestLeveledUsers += $"**{index + 1}.** {Context.Guild.GetUser(users[index].UserId).Mention} ▸ {users[index].Rank.Level}";
+                    topTenHighestLeveledUsers += $"**{index + 1}.** {Context.Guild.GetUser(users[index].UserId).Mention} {GuildEmotes.armadillo} {users[index].Rank.Level}";
                     break;
                 }
-                topTenHighestLeveledUsers += $"**{index + 1}.** {Context.Guild.GetUser(users[index].UserId).Mention} ▸ {users[index].Rank.Level}\n";
-
+                topTenHighestLeveledUsers += $"**{index + 1}.** {Context.Guild.GetUser(users[index].UserId).Mention} {GuildEmotes.armadillo} {users[index].Rank.Level}\n";
             }
 
 

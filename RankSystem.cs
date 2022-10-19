@@ -50,7 +50,7 @@ namespace ArmadilloGamingDiscordBot
                 userCollection.UpdateOne(userFilter, updateMaxExp);
                 userCollection.UpdateOne(userFilter, updateLevel);
 
-                message.Channel.SendMessageAsync($"{message.Author.Mention} has leveled up to level {userRank.Level}!");
+                message.Channel.SendMessageAsync($"{GuildEmotes.armadillo} {message.Author.Mention} has leveled up to level {userRank.Level}!");
             }
 
         }
