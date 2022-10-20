@@ -30,7 +30,7 @@ namespace ArmadilloGamingDiscordBot
                 var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
                 User user = BsonSerializer.Deserialize<User>(userCollection.Find<BsonDocument>(Builders<BsonDocument>.Filter.Eq("UserId", message.Author.Id)).First());
 
-                if (RankSystem.ExpGainIsOnCooldown(mongoClient, user)) { Console.WriteLine($"on cooldown: {user.Rank.LastUnixTimeUserGainedExp}"); return; }
+                if (RankSystem.ExpGainIsOnCooldown(mongoClient, user)) { return; }
 
                 RankSystem.UpdateRankOnMessageSent(mongoClient, message);
             }

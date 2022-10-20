@@ -100,12 +100,17 @@ namespace ArmadilloGamingDiscordBot
             long unixTimeInSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             long timePastSinceLastExpGain = unixTimeInSeconds - user.Rank.LastUnixTimeUserGainedExp;
 
+            // Gets ranksettings
+            var settingsCollection = mongoClient.GetDatabase("SettingsDatabase").GetCollection<BsonDocument>("Settings");
+            Settings rankSettings = BsonSerializer.Deserialize<Settings>(settingsCollection.Find<BsonDocument>(new BsonDocument()).First());
+
+            // Updates unixTime
             var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
             var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", user.UserId);
             var unixTimeUpdate = Builders<BsonDocument>.Update.Set("Rank.LastUnixTimeUserGainedExp", unixTimeInSeconds);
             userCollection.UpdateOne(userFilter, unixTimeUpdate);
             
-            if(timePastSinceLastExpGain > 5) { return false; } else { return true; }
+            if(timePastSinceLastExpGain > rankSettings.ExpGainCooldown) { return false; } else { return true; }
         }
     }
 

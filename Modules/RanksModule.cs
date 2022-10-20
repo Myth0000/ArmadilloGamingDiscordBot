@@ -77,5 +77,37 @@ namespace ArmadilloGamingDiscordBot.Modules
 
             await RespondAsync(embed: leaderboardEmbed.Build());
         }
+
+
+
+
+        [RequireUserPermission(GuildPermission.Administrator)]
+        [SlashCommand("exp-cooldown", "Allows the admin to change the cooldown for gaining exp.")]
+        public async Task HandleExpCooldown(int cooldown)
+        {
+            var settingsCollection = mongoClient.GetDatabase("SettingsDatabase").GetCollection<BsonDocument>("Settings");
+            var updateExpGainCooldown = Builders<BsonDocument>.Update.Set("ExpGainCooldown", cooldown);
+
+            settingsCollection.UpdateOne(new BsonDocument(), updateExpGainCooldown);
+
+            await RespondAsync($"{GuildEmotes.armadillo} The exp gain cooldown has been set to **{cooldown}** seconds.", ephemeral:true);
+        }
+
+
+
+        [SlashCommand("settings", "Displays the current settings of the bot.")]
+        public async Task HandleSettings()
+        {
+            var settingsCollection = mongoClient.GetDatabase("SettingsDatabase").GetCollection<BsonDocument>("Settings");
+            Settings settings = BsonSerializer.Deserialize<Settings>(settingsCollection.Find<BsonDocument>(new BsonDocument()).First());
+
+            Embed settingsEmbed = new EmbedBuilder()
+                .WithAuthor("Settings", iconUrl: Context.Guild.IconUrl)
+                .AddField(new EmbedFieldBuilder() { Name = "Exp Gain Cooldown", Value = $"{GuildEmotes.armadillo} {settings.ExpGainCooldown} seconds"})
+                .WithCurrentTimestamp()
+                .Build();
+
+            await RespondAsync(embed: settingsEmbed);
+        }
     }
 }
