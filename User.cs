@@ -20,16 +20,5 @@ namespace ArmadilloGamingDiscordBot
         {
             UserId = userId;
         }
-
-
-        public bool ExistsInUserJson()
-        {
-            User[] users = JsonSerializer.Deserialize<User[]>(File.ReadAllText(DirectoryPaths.UsersJsonPath));
-
-            foreach (User user in users)
-            {
-                if (user.UserId == UserId) { return true; }
-            } return false;
-        }
     }
 }

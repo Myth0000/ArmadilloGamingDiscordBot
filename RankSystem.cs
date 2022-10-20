@@ -91,6 +91,22 @@ namespace ArmadilloGamingDiscordBot
 
 
 
+
+        /// <summary>
+        /// Returns whether a user's exp gain is on cooldown or not.
+        /// </summary>
+        public static bool ExpGainIsOnCooldown(MongoClient mongoClient, User user)
+        {
+            long unixTimeInSeconds = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            long timePastSinceLastExpGain = unixTimeInSeconds - user.Rank.LastUnixTimeUserGainedExp;
+
+            var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
+            var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", user.UserId);
+            var unixTimeUpdate = Builders<BsonDocument>.Update.Set("Rank.LastUnixTimeUserGainedExp", unixTimeInSeconds);
+            userCollection.UpdateOne(userFilter, unixTimeUpdate);
+            
+            if(timePastSinceLastExpGain > 5) { return false; } else { return true; }
+        }
     }
 
 
@@ -117,5 +133,10 @@ namespace ArmadilloGamingDiscordBot
         /// The total amount of Exp in possession since level 0.
         /// </summary>
         public int TotalExp { get; set; } = 0;
+
+        /// <summary>
+        /// Last time exp was gained in Unix Time Seconds.
+        /// </summary>
+        public long LastUnixTimeUserGainedExp = 0;
     }
 }

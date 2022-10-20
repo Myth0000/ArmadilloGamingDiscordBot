@@ -9,6 +9,7 @@ using Discord.WebSocket;
 using System.Text.Json;
 using MongoDB.Driver;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 
 
 namespace ArmadilloGamingDiscordBot
@@ -16,7 +17,7 @@ namespace ArmadilloGamingDiscordBot
     public class ClientEvents
     {
 
-        MongoClient mongoClient = new MongoClient("mongodb+srv://Myth0000:JhgZ5shGWcxj3kEj@usercluster.djfruor.mongodb.net/?retryWrites=true&w=majority");
+        MongoClient mongoClient = new(Storage.TestBotDatabaseConnectionString);
 
         public async Task MessageRecievedEvent(SocketMessage message)
         {
@@ -26,6 +27,11 @@ namespace ArmadilloGamingDiscordBot
 
             try
             {
+                var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
+                User user = BsonSerializer.Deserialize<User>(userCollection.Find<BsonDocument>(Builders<BsonDocument>.Filter.Eq("UserId", message.Author.Id)).First());
+
+                if (RankSystem.ExpGainIsOnCooldown(mongoClient, user)) { Console.WriteLine($"on cooldown: {user.Rank.LastUnixTimeUserGainedExp}"); return; }
+
                 RankSystem.UpdateRankOnMessageSent(mongoClient, message);
             }
             catch (InvalidOperationException ex) // if user doesn't exist in UserDatabase 

@@ -11,6 +11,8 @@ namespace ArmadilloGamingDiscordBot
     /// </summary>
     public static class GuildEmotes
     {
-        public static string armadillo { get { return "<:armadillo:911247664094539777>"; } }
+        // armadillogaming : <:armadillo:911247664094539777>"
+        // test server : <:armadillo:1032404142989246506>
+        public static string armadillo { get { return "<:armadillo:1032404142989246506>"; } }
     }
 }
