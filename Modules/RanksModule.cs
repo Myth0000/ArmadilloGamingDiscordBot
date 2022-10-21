@@ -81,7 +81,7 @@ namespace ArmadilloGamingDiscordBot.Modules
 
 
 
-        [RequireUserPermission(GuildPermission.Administrator)]
+        [DefaultMemberPermissions(GuildPermission.Administrator)]
         [SlashCommand("exp-cooldown", "Allows the admin to change the cooldown for gaining exp.")]
         public async Task HandleExpCooldown(int cooldown)
         {
