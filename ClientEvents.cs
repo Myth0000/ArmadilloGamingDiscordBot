@@ -17,7 +17,7 @@ namespace ArmadilloGamingDiscordBot
     public class ClientEvents
     {
 
-        MongoClient mongoClient = new(Storage.ArmadillGamingDatabaseConnectionString);
+        MongoClient mongoClient = new(Storage.TestBotDatabaseConnectionString);
 
         public async Task MessageRecievedEvent(SocketMessage message)
         {
