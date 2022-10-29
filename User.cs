@@ -7,6 +7,7 @@ using System.Text.Json;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using ArmadilloGamingDiscordBot.Blueprints;
 
 namespace ArmadilloGamingDiscordBot
 {
@@ -15,6 +16,8 @@ namespace ArmadilloGamingDiscordBot
     {
         public ulong UserId { get; set; }
         public Rank Rank { get; set; } = new Rank();
+        public int ArmadilloCoin { get; set; } = 0;
+        public List<Item> Inventory { get; set; } = new List<Item>();
 
         public User(ulong userId)
         {
