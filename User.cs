@@ -17,7 +17,7 @@ namespace ArmadilloGamingDiscordBot
         public ulong UserId { get; set; }
         public Rank Rank { get; set; } = new Rank();
         public int ArmadilloCoin { get; set; } = 0;
-        public List<Item> Inventory { get; set; } = new List<Item>();
+        public List<Item> Inventory { get; set; } = new();
 
         public User(ulong userId)
         {
