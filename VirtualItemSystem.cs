@@ -25,7 +25,7 @@ namespace ArmadilloGamingDiscordBot
         }
 
 
-        public static VirtualItem ConvertEmoteIdToItem(string emoteId, string emoteDescription)
+        public static VirtualItem ConvertEmoteIdToItem(string emoteId, string imageUrl, string emoteDescription)
         {
             string emoteName = emoteId.Split(':')[1];
 
@@ -33,7 +33,8 @@ namespace ArmadilloGamingDiscordBot
             {
                 Name = emoteName,
                 Description = emoteDescription,
-                EmoteId = emoteId
+                EmoteId = emoteId,
+                ImageUrl = imageUrl,
             };
         }
 

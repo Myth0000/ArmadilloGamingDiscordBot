@@ -52,6 +52,8 @@ namespace ArmadilloGamingDiscordBot.Modules
         }
 
 
+
+
         [SlashCommand("previewitem", "Allows the user to preview a Virtual Item.")]
         public async Task HandlePreviewItem([Summary("item" ,"Name of the Virtual Item.")]string item)
         {
@@ -60,6 +62,7 @@ namespace ArmadilloGamingDiscordBot.Modules
                 VirtualItem virtualItem = VirtualItemSystem.GetItemFromDatabase(mongoClient, item);
                 Embed itemPreviewEmbed = new EmbedBuilder()
                     .AddField(new EmbedFieldBuilder() { Name = $"{virtualItem.EmoteId} {virtualItem.Name}", Value = virtualItem.Description })
+                    .WithThumbnailUrl(virtualItem.ImageUrl)
                     .WithCurrentTimestamp()
                     .Build();
 
@@ -68,15 +71,17 @@ namespace ArmadilloGamingDiscordBot.Modules
         }
 
 
+
+
         [DefaultMemberPermissions(GuildPermission.Administrator)]
         [SlashCommand("addvirtualitem", "Adds a Virtual Item to the database.")]
-        public async Task HandleAddItem([Summary("emote", "A custom discord emoji to represent the Virtual Item.")] string emote, string description)
+        public async Task HandleAddItem([Summary("emote", "A custom discord emoji to represent the Virtual Item.")] string emote, string imageUrl, string description)
         {
             // emote is a string, it only becomes an actual emote when used in the discord chat
-            VirtualItem item = VirtualItemSystem.ConvertEmoteIdToItem(emote, description);
+            VirtualItem item = VirtualItemSystem.ConvertEmoteIdToItem(emote, imageUrl, description);
 
             VirtualItemSystem.AddItemToDatabase(mongoClient, item);
-            await RespondAsync($"{item.EmoteId} {item.Name} | `{item.EmoteId}` | {item.Description}");
+            await RespondAsync($"{item.EmoteId} {item.Name} | `{item.EmoteId}` | {item.Description} | {item.ImageUrl}");
         }
 
 
