@@ -10,6 +10,7 @@ using Discord.WebSocket;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
+using ArmadilloGamingDiscordBot.Blueprints;
 
 namespace ArmadilloGamingDiscordBot
 {
@@ -48,12 +49,19 @@ namespace ArmadilloGamingDiscordBot
                 userCollection.UpdateOne(userFilter, updateMaxExp);
                 userCollection.UpdateOne(userFilter, updateLevel);
 
-                message.Channel.SendMessageAsync($"{GuildEmotes.armadillo} {message.Author.Mention} has leveled up to level {userRank.Level}!");
+                
 
                 // check if level % 10 == 0
                 if(userRank.Level % 10 == 0)
                 {
-                    // give user item, level items name format = "Level_num", ex. "Level_Ten"
+                    VirtualItem virtualItem = VirtualItemSystem.GetItemFromDatabase(mongoClient, "First_Item");
+
+                    VirtualItemSystem.AddItemToUserInventory(mongoClient, virtualItem, message.Author.Id);
+                    message.Channel.SendMessageAsync($"{GuildEmotes.armadillo} {message.Author.Mention} has leveled up to level {userRank.Level}! You got a {virtualItem.EmoteId} for reaching level {userRank.Level}.");
+                }
+                else
+                {
+                    message.Channel.SendMessageAsync($"{GuildEmotes.armadillo} {message.Author.Mention} has leveled up to level {userRank.Level}!");
                 }
             }
 
