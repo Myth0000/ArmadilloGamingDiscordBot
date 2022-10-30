@@ -15,6 +15,6 @@ namespace ArmadilloGamingDiscordBot.Blueprints
         public string Description { get; set; }
         public string EmoteId { get; set; }
         public string ImageUrl { get; set; }
-
+        public string Obtaining { get; set; }
     }
 }

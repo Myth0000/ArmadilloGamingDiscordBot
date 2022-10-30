@@ -25,7 +25,9 @@ namespace ArmadilloGamingDiscordBot
         }
 
 
-        public static VirtualItem ConvertEmoteIdToItem(string emoteId, string imageUrl, string emoteDescription)
+
+
+        public static VirtualItem ConvertEmoteIdToItem(string emoteId, string imageUrl, string obtaining, string emoteDescription)
         {
             string emoteName = emoteId.Split(':')[1];
 
@@ -35,8 +37,11 @@ namespace ArmadilloGamingDiscordBot
                 Description = emoteDescription,
                 EmoteId = emoteId,
                 ImageUrl = imageUrl,
+                Obtaining = obtaining,
             };
         }
+
+
 
 
         public static void AddItemToDatabase(MongoClient mongoClient, VirtualItem item)
@@ -46,6 +51,8 @@ namespace ArmadilloGamingDiscordBot
         }
 
 
+
+
         public static VirtualItem GetItemFromDatabase(MongoClient mongoClient, string itemName)
         {
             var itemsCollection = mongoClient.GetDatabase("VirtualItemDatabase").GetCollection<BsonDocument>("VirtualItem");
@@ -53,6 +60,8 @@ namespace ArmadilloGamingDiscordBot
 
             return BsonSerializer.Deserialize<VirtualItem>(itemsCollection.Find<BsonDocument>(itemFilter).First());
         }
+
+
 
 
         public static void AddItemToUserInventory(MongoClient mongoClient, VirtualItem item, ulong userId)
@@ -76,5 +85,29 @@ namespace ArmadilloGamingDiscordBot
             var updateInventory = Builders<BsonDocument>.Update.Set("Inventory", user.Inventory);
             userCollection.UpdateOne(userFilter, updateInventory);           
         }
+    
+    
+    
+    
+        public static VirtualItem GetRandomItemWithObtaining(MongoClient mongoClient, string obtaining)
+        {
+            var virtualItemCollection = mongoClient.GetDatabase("VirtualItemDatabase").GetCollection<BsonDocument>("VirtualItem");
+            var obtainingFilter = Builders<BsonDocument>.Filter.Eq("Obtaining", obtaining);
+            List<VirtualItem> virtualItemsList = new();
+
+            List<BsonDocument> itemsBsonDocumentList = virtualItemCollection.Find<BsonDocument>(obtainingFilter).ToList();
+            var randomBsonItem = itemsBsonDocumentList[new Random().Next(0, itemsBsonDocumentList.Count)];
+
+            VirtualItem virtualItem = BsonSerializer.Deserialize<VirtualItem>(randomBsonItem);
+
+            return virtualItem;
+        }
+    
+
+
+
+    
+    
+    
     }
 }

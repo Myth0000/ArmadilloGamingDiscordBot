@@ -61,7 +61,10 @@ namespace ArmadilloGamingDiscordBot.Modules
             {
                 VirtualItem virtualItem = VirtualItemSystem.GetItemFromDatabase(mongoClient, item);
                 Embed itemPreviewEmbed = new EmbedBuilder()
-                    .AddField(new EmbedFieldBuilder() { Name = $"{virtualItem.EmoteId} {virtualItem.Name}", Value = virtualItem.Description })
+                    .AddField(new EmbedFieldBuilder() { Name=$"{virtualItem.EmoteId} Virtual Item", Value="** **"})
+                    .AddField(new EmbedFieldBuilder() { Name = "Name", Value = virtualItem.Name })
+                    .AddField(new EmbedFieldBuilder() { Name="Description", Value= virtualItem.Description})
+                    .AddField(new EmbedFieldBuilder() { Name="Obtainable Through", Value=virtualItem.Obtaining})
                     .WithThumbnailUrl(virtualItem.ImageUrl)
                     .WithCurrentTimestamp()
                     .Build();
@@ -75,14 +78,16 @@ namespace ArmadilloGamingDiscordBot.Modules
 
         [DefaultMemberPermissions(GuildPermission.Administrator)]
         [SlashCommand("addvirtualitem", "Adds a Virtual Item to the database.")]
-        public async Task HandleAddItem([Summary("emote", "A custom discord emoji to represent the Virtual Item.")] string emote, string imageUrl, string description)
+        public async Task HandleAddItem([Summary("emote", "A custom discord emoji to represent the Virtual Item.")] string emote, string imageUrl, [Summary("obtaining", "How is the Virtual Item obtained?")] string obtaining, string description)
         {
             // emote is a string, it only becomes an actual emote when used in the discord chat
-            VirtualItem item = VirtualItemSystem.ConvertEmoteIdToItem(emote, imageUrl, description);
+            VirtualItem item = VirtualItemSystem.ConvertEmoteIdToItem(emote, imageUrl, obtaining, description);
 
             VirtualItemSystem.AddItemToDatabase(mongoClient, item);
-            await RespondAsync($"{item.EmoteId} {item.Name} | `{item.EmoteId}` | {item.Description} | {item.ImageUrl}");
+            await RespondAsync($"{item.EmoteId} {item.Name} | `{item.EmoteId}` | {item.Description} | {item.Obtaining} | {item.ImageUrl}");
         }
+
+
 
 
         [DefaultMemberPermissions(GuildPermission.Administrator)]

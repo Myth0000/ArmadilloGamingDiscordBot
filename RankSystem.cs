@@ -51,12 +51,13 @@ namespace ArmadilloGamingDiscordBot
 
                 
 
-                // check if level % 10 == 0
+                // every 10 levels, the user will get a random Virtual Item on level up
                 if(userRank.Level % 10 == 0)
                 {
-                    VirtualItem virtualItem = VirtualItemSystem.GetItemFromDatabase(mongoClient, "First_Item");
+                    VirtualItem virtualItem = VirtualItemSystem.GetRandomItemWithObtaining(mongoClient, $"Level {userRank.Level} Rewards");
 
                     VirtualItemSystem.AddItemToUserInventory(mongoClient, virtualItem, message.Author.Id);
+
                     message.Channel.SendMessageAsync($"{GuildEmotes.armadillo} {message.Author.Mention} has leveled up to level {userRank.Level}! You got a {virtualItem.EmoteId} for reaching level {userRank.Level}.");
                 }
                 else
