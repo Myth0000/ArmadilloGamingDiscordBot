@@ -12,11 +12,11 @@ using ArmadilloGamingDiscordBot.Blueprints;
 
 namespace ArmadilloGamingDiscordBot.Modules
 {
-    public class ItemsModule : InteractionModuleBase<SocketInteractionContext>
+    public class VirtualItemModule : InteractionModuleBase<SocketInteractionContext>
     {
         MongoClient mongoClient = new(Storage.TestBotDatabaseConnectionString);
 
-        [SlashCommand("inventory", "Displays a list of items the user owns.")]
+        [SlashCommand("inventory", "Displays a list of Virtual Items the user owns.")]
         public async Task HandleInventory(SocketUser user = null)
         {
             user ??= Context.User;
@@ -24,7 +24,7 @@ namespace ArmadilloGamingDiscordBot.Modules
             {
                 string userInventory = "";
 
-                foreach (Item item in ItemsSystem.GetUserInventory(mongoClient, user.Id))
+                foreach (VirtualItem item in VirtualItemSystem.GetUserInventory(mongoClient, user.Id))
                 {
                     userInventory += item.EmoteId;
                 }
@@ -47,14 +47,21 @@ namespace ArmadilloGamingDiscordBot.Modules
         }
 
 
+        [SlashCommand("previewitem", "Allows the user to preview a Virtual Item.")]
+        public async Task HandlePreviewItem(string Item)
+        {
+
+        }
+
+
         [DefaultMemberPermissions(GuildPermission.Administrator)]
-        [SlashCommand("additem", "Adds a item to the database.")]
-        public async Task HandleAddItem([Summary("emote", "A custom discord emoji.")] string emote, string description)
+        [SlashCommand("addvirtualitem", "Adds a Virtual Item to the database.")]
+        public async Task HandleAddItem([Summary("emote", "A custom discord emoji to represent the Virtual Item.")] string emote, string description)
         {
             // emote is a string, it only becomes an actual emote when used in the discord chat
-            Item item = ItemsSystem.ConvertEmoteIdToItem(emote, description);
+            VirtualItem item = VirtualItemSystem.ConvertEmoteIdToItem(emote, description);
 
-            ItemsSystem.AddItemToDatabase(mongoClient, item);
+            VirtualItemSystem.AddItemToDatabase(mongoClient, item);
             await RespondAsync($"{item.EmoteId} {item.Name} | `{item.EmoteId}` | {item.Description}");
         }
     }

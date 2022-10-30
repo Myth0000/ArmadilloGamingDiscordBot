@@ -10,13 +10,13 @@ using ArmadilloGamingDiscordBot.Blueprints;
 
 namespace ArmadilloGamingDiscordBot
 {
-    public static class ItemsSystem
+    public static class VirtualItemSystem
     {
 
         /// <summary>
         /// Returns an array of all the items the user has.
         /// </summary>
-        public static List<Item> GetUserInventory(MongoClient mongoClient, ulong userId)
+        public static List<VirtualItem> GetUserInventory(MongoClient mongoClient, ulong userId)
         {
             var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
             var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", userId);
@@ -25,11 +25,11 @@ namespace ArmadilloGamingDiscordBot
         }
 
 
-        public static Item ConvertEmoteIdToItem(string emoteId, string emoteDescription)
+        public static VirtualItem ConvertEmoteIdToItem(string emoteId, string emoteDescription)
         {
             string emoteName = emoteId.Split(':')[1];
 
-            return new Item()
+            return new VirtualItem()
             {
                 Name = emoteName,
                 Description = emoteDescription,
@@ -38,23 +38,23 @@ namespace ArmadilloGamingDiscordBot
         }
 
 
-        public static void AddItemToDatabase(MongoClient mongoClient, Item item)
+        public static void AddItemToDatabase(MongoClient mongoClient, VirtualItem item)
         {
-            var itemsCollection = mongoClient.GetDatabase("ItemsDatabase").GetCollection<BsonDocument>("Items");
+            var itemsCollection = mongoClient.GetDatabase("VirtualItemDatabase").GetCollection<BsonDocument>("VirtualItem");
             itemsCollection.InsertOne(item.ToBsonDocument());
         }
 
 
-        public static Item GetItemFromDatabase(MongoClient mongoClient, string itemName)
+        public static VirtualItem GetItemFromDatabase(MongoClient mongoClient, string itemName)
         {
-            var itemsCollection = mongoClient.GetDatabase("ItemsDatabase").GetCollection<BsonDocument>("Items");
+            var itemsCollection = mongoClient.GetDatabase("VirtualItemDatabase").GetCollection<BsonDocument>("VirtualItem");
             var itemFilter = Builders<BsonDocument>.Filter.Eq("Name", itemName);
 
-            return BsonSerializer.Deserialize<Item>(itemsCollection.Find<BsonDocument>(itemFilter).First());
+            return BsonSerializer.Deserialize<VirtualItem>(itemsCollection.Find<BsonDocument>(itemFilter).First());
         }
 
 
-        public static void AddItemToUserInventory(MongoClient mongoClient, Item item, ulong userId)
+        public static void AddItemToUserInventory(MongoClient mongoClient, VirtualItem item, ulong userId)
         {
             var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
             var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", userId);
@@ -64,7 +64,7 @@ namespace ArmadilloGamingDiscordBot
 
             if(user.Inventory == null) 
             {
-                user.Inventory = new List<Item>() { item };
+                user.Inventory = new List<VirtualItem>() { item };
             }
             else
             {

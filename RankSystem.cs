@@ -40,8 +40,6 @@ namespace ArmadilloGamingDiscordBot
 
             if(userRank.CurrentExp >= userRank.MaxExp)
             {
-                // Cexp -= Mexp
-
                 var updateCurrentExp = Builders<BsonDocument>.Update.Set("Rank.CurrentExp", (userRank.CurrentExp - userRank.MaxExp));
                 var updateMaxExp = Builders<BsonDocument>.Update.Set("Rank.MaxExp", Math.Floor(userRank.MaxExp * 1.1));
                 var updateLevel = Builders<BsonDocument>.Update.Set("Rank.Level", ++userRank.Level);
@@ -51,6 +49,12 @@ namespace ArmadilloGamingDiscordBot
                 userCollection.UpdateOne(userFilter, updateLevel);
 
                 message.Channel.SendMessageAsync($"{GuildEmotes.armadillo} {message.Author.Mention} has leveled up to level {userRank.Level}!");
+
+                // check if level % 10 == 0
+                if(userRank.Level % 10 == 0)
+                {
+                    // give user item, level items name format = "Level_num", ex. "Level_Ten"
+                }
             }
 
         }

@@ -9,7 +9,7 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace ArmadilloGamingDiscordBot.Blueprints
 {
     [BsonIgnoreExtraElements]
-    public class Item
+    public class VirtualItem
     {
         public string Name { get; set; }
         public string Description { get; set; }
