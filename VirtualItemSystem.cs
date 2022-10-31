@@ -27,7 +27,7 @@ namespace ArmadilloGamingDiscordBot
 
 
 
-        public static VirtualItem ConvertEmoteIdToItem(string emoteId, string imageUrl, string obtaining, string emoteDescription)
+        public static VirtualItem ConvertEmoteIdToItem(string emoteId, string imageUrl, string obtaining, string rarity, string emoteDescription)
         {
             string emoteName = emoteId.Split(':')[1];
 
@@ -38,6 +38,7 @@ namespace ArmadilloGamingDiscordBot
                 EmoteId = emoteId,
                 ImageUrl = imageUrl,
                 Obtaining = obtaining,
+                Rarity = rarity,
             };
         }
 
@@ -59,6 +60,24 @@ namespace ArmadilloGamingDiscordBot
             var itemFilter = Builders<BsonDocument>.Filter.Eq("Name", itemName);
 
             return BsonSerializer.Deserialize<VirtualItem>(itemsCollection.Find<BsonDocument>(itemFilter).First());
+        }
+
+
+
+
+        public static VirtualItem[] GetAllItemsFromDatabase(MongoClient mongoClient)
+        {
+            var itemsCollection = mongoClient.GetDatabase("VirtualItemDatabase").GetCollection<BsonDocument>("VirtualItem");
+            var itemsBsonDocumentList = itemsCollection.Find<BsonDocument>(new BsonDocument()).ToList();
+            List<VirtualItem> virtualItemsList = new();
+
+            foreach(var document in itemsBsonDocumentList)
+            {
+                VirtualItem item = BsonSerializer.Deserialize<VirtualItem>(document);
+                virtualItemsList.Add(item);
+            }
+
+            return virtualItemsList.ToArray();
         }
 
 
