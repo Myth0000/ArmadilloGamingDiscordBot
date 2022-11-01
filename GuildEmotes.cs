@@ -14,6 +14,7 @@ namespace ArmadilloGamingDiscordBot
         // armadillogaming : <:armadillo:911247664094539777>"
         // test server : <:armadillo:1032404142989246506>
         public static string armadillo { get { return "<:armadillo:1032404142989246506>"; } }
-        public static string First_Item { get { return "<:First_Item:1036340109672452136>"; } }
+        public static string armadilloCoin { get { return "<:ArmadilloCoin:1036766409671327825>"; } }
+
     }
 }

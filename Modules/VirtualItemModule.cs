@@ -132,6 +132,16 @@ namespace ArmadilloGamingDiscordBot.Modules
 
 
 
+        
+        [ComponentInteraction("ShopSelectMenu")]
+        public async Task HandleShopSelectMenu(string[] inputs)
+        {
+
+            await RespondAsync($"You bought a {inputs[0]} and got a <item> from it!");
+        }
+
+
+
 
         [DefaultMemberPermissions(GuildPermission.Administrator)]
         [SlashCommand("addvirtualitem", "Adds a Virtual Item to the database.")]
