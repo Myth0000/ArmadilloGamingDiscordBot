@@ -37,17 +37,20 @@ namespace ArmadilloGamingDiscordBot
             var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", message.Author.Id);
 
             var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
-            Rank userRank = BsonSerializer.Deserialize<User>(userCollection.Find<BsonDocument>(userFilter).First()).Rank;
+            User user = BsonSerializer.Deserialize<User>(userCollection.Find<BsonDocument>(userFilter).First());
+            Rank userRank = user.Rank;
 
             if(userRank.CurrentExp >= userRank.MaxExp)
             {
                 var updateCurrentExp = Builders<BsonDocument>.Update.Set("Rank.CurrentExp", (userRank.CurrentExp - userRank.MaxExp));
                 var updateMaxExp = Builders<BsonDocument>.Update.Set("Rank.MaxExp", Math.Floor(userRank.MaxExp * 1.1));
                 var updateLevel = Builders<BsonDocument>.Update.Set("Rank.Level", ++userRank.Level);
+                var updateArmadilloCoin = Builders<BsonDocument>.Update.Set("ArmadilloCoin", user.ArmadilloCoin + userRank.Level + 5);
 
                 userCollection.UpdateOne(userFilter, updateCurrentExp);
                 userCollection.UpdateOne(userFilter, updateMaxExp);
                 userCollection.UpdateOne(userFilter, updateLevel);
+                userCollection.UpdateOne(userFilter, updateArmadilloCoin);
 
                 
 

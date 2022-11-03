@@ -68,18 +68,31 @@ namespace ArmadilloGamingDiscordBot.Modules
                     // if user can afford the item
                     if(item.Price <= user.ArmadilloCoin)
                     {
-                        VirtualItem virtualItem = VirtualItemSystem.GetRandomItemWithObtaining(mongoClient, "Classic VI Pack");
+                        switch (item.Name)
+                        {
+                            case "Classic VI Pack":
+                                BuyItem(item.Name);
+                                break;
+                            case "Deluxe VI Pack":
+                                BuyItem(item.Name);
+                                break;
+                        }
 
-                        user.ArmadilloCoin -= item.Price;
-                        user.Inventory.Add(virtualItem);
+                        async void BuyItem(string shopItemName)
+                        {
+                            VirtualItem virtualItem = VirtualItemSystem.GetRandomItemWithObtaining(mongoClient, shopItemName);
 
-                        var updateArmadilloCoins = Builders<BsonDocument>.Update.Set("ArmadilloCoin", user.ArmadilloCoin);
-                        var updateInventory = Builders<BsonDocument>.Update.Set("Inventory", user.Inventory);
+                            user.ArmadilloCoin -= item.Price;
+                            user.Inventory.Add(virtualItem);
 
-                        userCollection.UpdateOne(userFilter, updateArmadilloCoins);
-                        userCollection.UpdateOne(userFilter, updateInventory);
+                            var updateArmadilloCoins = Builders<BsonDocument>.Update.Set("ArmadilloCoin", user.ArmadilloCoin);
+                            var updateInventory = Builders<BsonDocument>.Update.Set("Inventory", user.Inventory);
 
-                        await RespondAsync($"{Context.User.Mention} found a **{virtualItem.Rarity} {virtualItem.Name}** inside the {item.Name}.");
+                            userCollection.UpdateOne(userFilter, updateArmadilloCoins);
+                            userCollection.UpdateOne(userFilter, updateInventory);
+
+                            await RespondAsync($"{Context.User.Mention} found a **{virtualItem.Rarity} {virtualItem.Name}** inside the {item.Name}.");
+                        }
                     }
                 }
             }
