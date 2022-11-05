@@ -117,48 +117,5 @@ namespace ArmadilloGamingDiscordBot.Modules
 
 
 
-        [SlashCommand("virtualitems", "Displays all the Virtual Items in the database")]
-        public async Task HandleVirtualItems()
-        {
-            string virtualItems = "";
-
-            foreach(VirtualItem item in VirtualItemSystem.GetAllItemsFromDatabase(mongoClient))
-            {
-                virtualItems += $"{item.EmoteId} {item.Rarity} {item.Name} \n{item.Description}\n\n";
-            }
-
-            await RespondAsync(virtualItems);
-        }
-
-
-
-
-        [DefaultMemberPermissions(GuildPermission.Administrator)]
-        [SlashCommand("addvirtualitem", "Adds a Virtual Item to the database.")]
-        public async Task HandleAddItem([Summary("emote", "A custom discord emoji to represent the Virtual Item.")] string emote, string imageUrl, [Summary("obtaining", "How is the Virtual Item obtained?")] 
-        [Choice("Level 10 Rewards", "Level 10 Rewards"), Choice("Level 20 Rewards", "Level 20 Rewards"), Choice("Level 30 Rewards", "Level 30 Rewards"),Choice("Unobtainable", "Unobtainable")]
-        string obtaining,
-        [Choice("COMMON", "COMMON"), Choice("RARE", "RARE"), Choice("UNIQUE", "UNIQUE"), Choice("LEGENDARY", "LEGENDARY"), Choice("MYTHIC", "MYTHIC")]
-        string rarity, string description)
-        {
-            // emote is a string, it only becomes an actual emote when used in the discord chat
-            VirtualItem item = VirtualItemSystem.ConvertEmoteIdToItem(emote, imageUrl, obtaining, rarity, description);
-
-            VirtualItemSystem.AddItemToDatabase(mongoClient, item);
-            await RespondAsync($"{item.EmoteId} {item.Name} | `{item.EmoteId}` | {item.Description} | {item.Obtaining} | {item.ImageUrl}");
-        }
-
-
-
-
-        [DefaultMemberPermissions(GuildPermission.Administrator)]
-        [SlashCommand("givevirtualitem", "Gives a Virtual Item to the user.")]
-        public async Task HandleGiveVirtualItem([Summary("item", "Name of the Virtual Item")]string item, [Summary("user", "User to give the Virtual Item to.")] SocketUser user = null)
-        {
-            user ??= Context.User;
-            VirtualItem virtualItem = VirtualItemSystem.GetItemFromDatabase(mongoClient, item);
-            VirtualItemSystem.AddItemToUserInventory(mongoClient, virtualItem, user.Id);
-            await RespondAsync($"{user.Mention} has been given {virtualItem.EmoteId}");
-        }
     }
 }

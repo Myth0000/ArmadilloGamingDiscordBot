@@ -102,21 +102,6 @@ namespace ArmadilloGamingDiscordBot.Modules
 
 
 
-        [DefaultMemberPermissions(GuildPermission.Administrator)]
-        [SlashCommand("addshopitem", "Adds an item to the shop for purchase.")]
-        public async Task HandleAddShopItem(string item_name, string description, int price, [Choice("Virtual Item", "Virtual Item")]string itemType)
-        {
-            ShopItem shopItem = new()
-            {
-                Name = item_name,
-                Description = description,
-                Price = price,
-                ItemType = itemType
-            };
-
-            ShopSystem.AddItemToShop(mongoClient, shopItem);
-
-            await RespondAsync("The item has been added to the shop.", ephemeral: true);
-        }
+        
     }
 }
