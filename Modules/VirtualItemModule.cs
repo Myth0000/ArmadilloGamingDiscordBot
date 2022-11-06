@@ -116,6 +116,14 @@ namespace ArmadilloGamingDiscordBot.Modules
 
 
 
-
+        [DefaultMemberPermissions(GuildPermission.Administrator)]
+        [SlashCommand("givevirtualitem", "Gives a Virtual Item to the user.")]
+        public async Task HandleGiveVirtualItem([Summary("item", "Name of the Virtual Item"), Choice("First_Item", "First_Item"), Choice("First_Animated_Item", "First_Animated_Item")] string item,
+            [Summary("user", "User to give the Virtual Item to.")] SocketUser user)
+        {
+            VirtualItem virtualItem = VirtualItemSystem.GetItemFromDatabase(mongoClient, item);
+            VirtualItemSystem.AddItemToUserInventory(mongoClient, virtualItem, user.Id);
+            await RespondAsync($"{user.Mention} has been given {virtualItem.EmoteId}");
+        }
     }
 }
