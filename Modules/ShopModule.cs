@@ -81,6 +81,15 @@ namespace ArmadilloGamingDiscordBot.Modules
                         async void BuyItem(string shopItemName)
                         {
                             VirtualItem virtualItem = VirtualItemSystem.GetRandomItemWithObtaining(mongoClient, shopItemName);
+                            int randomNumber = new Random().Next(1, 11);
+                            Console.WriteLine($"First Roll : {virtualItem.Rarity} | {randomNumber}");
+
+                            // original chances of legendary is 1/5, this makes those chances 2/25 which is 8%
+                            if((virtualItem.Rarity == "LEGENDARY") && (10%randomNumber != 0))
+                            {
+                                virtualItem = VirtualItemSystem.GetRandomItemWithObtaining(mongoClient, shopItemName);
+                                Console.WriteLine($"Second Roll : {virtualItem.Rarity} | {randomNumber}\n");
+                            }
 
                             user.ArmadilloCoin -= item.Price;
                             user.Inventory.Add(virtualItem);

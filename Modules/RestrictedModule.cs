@@ -61,6 +61,72 @@ namespace ArmadilloGamingDiscordBot.Modules
 
 
 
+        [SlashCommand("virtualttemsupdate", "Rolls in the new Virtual Items Update.")]
+        public async Task HandleVirtualItemsUpdate()
+        {
+            var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
+            List<User> userList = new();
+
+            
+            var userBsonDocumentList = userCollection.Find(new BsonDocument()).ToList();
+
+            // everyone level 1 & higher are added to the userList
+            foreach (var document in userBsonDocumentList)
+            {
+                User user = BsonSerializer.Deserialize<User>(document);
+                if (user.Rank.Level >= 1) { userList.Add(user); }
+            }
+
+
+            // give lvl rewards based on their level
+            foreach(User user in userList)
+            {
+                // update armadillo coins
+                user.ArmadilloCoin = CalculateArmadilloCoinsAtlevel(user.Rank.Level);
+
+                // give Virtual Items
+                if(user.Rank.Level % 10 == 0)
+                {
+                    for (int i = user.Rank.Level / 10; i > 0; i--)
+                    {
+                        VirtualItem levelUpVirtualItem = VirtualItemSystem.GetRandomItemWithObtaining(mongoClient, "Level Up Rewards");
+                        user.Inventory.Add(levelUpVirtualItem);
+                        Context.Channel.SendMessageAsync($"{GuildEmotes.armadillo} {Context.Guild.GetUser(user.UserId).Mention} got a {levelUpVirtualItem.Rarity} {levelUpVirtualItem.EmoteId} for leveling up.");
+                    }
+                }
+
+                // calculates how much armadillo coins a user has at a certain level
+                int CalculateArmadilloCoinsAtlevel(int atLevel)
+                {
+                    int coin = 0;
+
+                    for (int lvl = 1; lvl <= atLevel; lvl++)
+                    {
+                        coin += lvl + 5;
+                        Console.WriteLine($"level : {lvl} | coins : {coin}");
+                    }
+                    return coin;
+                }
+            }
+            // update user database with new data
+            foreach (User user in userList)
+            {
+                var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", user.UserId);
+
+                var updateArmadilloCoin = Builders<BsonDocument>.Update.Set("ArmadilloCoin", user.ArmadilloCoin);
+                var updateInventory = Builders<BsonDocument>.Update.Set("Inventory", user.Inventory);
+
+                userCollection.UpdateOne(userFilter, updateArmadilloCoin);
+                userCollection.UpdateOne(userFilter, updateInventory);
+            }
+
+
+            await RespondAsync("Successfully gave people their stuff.");
+        }
+
+
+
+
 
 
 
@@ -73,18 +139,32 @@ namespace ArmadilloGamingDiscordBot.Modules
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        /*
+        
         [SlashCommand("virtualitems", "Displays all the Virtual Items in the database")]
         public async Task HandleVirtualItems()
         {
             string virtualItems = "";
+            string virtualItems1 = "";
+
+            int itemCount = 0;
 
             foreach (VirtualItem item in VirtualItemSystem.GetAllItemsFromDatabase(mongoClient))
             {
+                itemCount++;
+                // discord only allows users to send up to 2000 characters in a message, so this is to avoid sending over 2000 characters in a single message.
+                if(itemCount >= 15)
+                {
+                    virtualItems1 += $"{item.EmoteId} {item.Rarity} {item.Name} \n{item.Description}\n\n";
+                    continue;
+                }
                 virtualItems += $"{item.EmoteId} {item.Rarity} {item.Name} \n{item.Description}\n\n";
             }
 
             await RespondAsync(virtualItems);
+            if(virtualItems1 != "")
+            {
+                Context.Channel.SendMessageAsync(virtualItems1);
+            }
         }
 
 
@@ -92,7 +172,7 @@ namespace ArmadilloGamingDiscordBot.Modules
 
         [SlashCommand("addvirtualitem", "Adds a Virtual Item to the database.")]
         public async Task HandleAddItem([Summary("emote", "A custom discord emoji to represent the Virtual Item.")] string emote, string imageUrl, [Summary("obtaining", "How is the Virtual Item obtained?")]
-        [Choice("Level 10 Rewards", "Level 10 Rewards"), Choice("Level 20 Rewards", "Level 20 Rewards"), Choice("Level 30 Rewards", "Level 30 Rewards"),Choice("Unobtainable", "Unobtainable")]
+        [Choice("Level Up Rewards", "Level Up Rewards"), Choice("Classic VI Pack", "Classic VI Pack"), Choice("Deluxe VI Pack", "Deluxe VI Pack"), Choice("Unobtainable", "Unobtainable")]
         string obtaining,
         [Choice("COMMON", "COMMON"), Choice("RARE", "RARE"), Choice("UNIQUE", "UNIQUE"), Choice("LEGENDARY", "LEGENDARY"), Choice("MYTHIC", "MYTHIC")]
         string rarity, string description)
@@ -134,7 +214,25 @@ namespace ArmadilloGamingDiscordBot.Modules
 
             await RespondAsync("The item has been added to the shop.", ephemeral: true);
         }
-        */
+
+
+
+
+        [SlashCommand("copymaindatabasetotestdatabase", "Copies the data from the main database to the test database.")]
+        public async Task HandleCopyDatabase(string database, string collection)
+        {
+            var mainDBclient = new MongoClient(Storage.ArmadillGamingDatabaseConnectionString);
+            var mainDBlist = mainDBclient.GetDatabase(database).GetCollection<BsonDocument>(collection).Find<BsonDocument>(new BsonDocument()).ToList();
+            var testDBcollection = mongoClient.GetDatabase(database).GetCollection<BsonDocument>(collection);
+            var testDBList = testDBcollection.Find<BsonDocument>(new BsonDocument()).ToList();
+
+            foreach(var item in mainDBlist)
+            {
+                testDBcollection.InsertOne(item);
+            }
+
+        }
+
 
 
 

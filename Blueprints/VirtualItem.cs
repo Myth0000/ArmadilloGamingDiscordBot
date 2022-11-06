@@ -11,6 +11,7 @@ namespace ArmadilloGamingDiscordBot.Blueprints
     [BsonIgnoreExtraElements]
     public class VirtualItem
     {
+        public long Id { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         public string Name { get; set; }
         public string Description { get; set; }
         public string EmoteId { get; set; }
