@@ -17,17 +17,16 @@ namespace ArmadilloGamingDiscordBot
     public class ClientEvents
     {
 
-        MongoClient mongoClient = new(Storage.TestBotDatabaseConnectionString);
+        MongoClient mongoClient = new(Storage.MongoDBConnectionString);
 
         public async Task MessageRecievedEvent(SocketMessage message)
         {
 
             // If the message is a slash command OR the message was in DMs OR the message was not from armadillogaming/discordbottest servers then return.
             ulong guildId = (message.Channel as SocketGuildChannel).Guild.Id;
-            Console.WriteLine($"msg sent in {guildId}.  {Storage.ArmadilloGamingGuildId}  {Storage.DiscordBotTestGuildId}");
             if ((message.Type == MessageType.ApplicationCommand) || (message.Channel.ToString().First<char>() == '@') ||
-                ((guildId != Storage.DiscordBotTestGuildId) && (guildId != Storage.ArmadilloGamingGuildId))) { Console.WriteLine(1); return; }
-            Console.WriteLine(2);
+                ((guildId != Storage.DiscordBotTestGuildId) && (guildId != Storage.ArmadilloGamingGuildId))) { return; }
+
             try
             {
                 var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");

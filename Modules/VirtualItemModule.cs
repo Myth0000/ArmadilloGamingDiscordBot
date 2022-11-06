@@ -17,7 +17,7 @@ namespace ArmadilloGamingDiscordBot.Modules
 {
     public class VirtualItemModule : InteractionModuleBase<SocketInteractionContext>
     {
-        MongoClient mongoClient = new(Storage.TestBotDatabaseConnectionString);
+        MongoClient mongoClient = new(Storage.MongoDBConnectionString);
 
         [SlashCommand("inventory", "Displays a list of Virtual Items the user owns.")]
         public async Task HandleInventory(SocketUser user = null)

@@ -15,7 +15,7 @@ namespace ArmadilloGamingDiscordBot.Modules
 {
     public class RanksModule : InteractionModuleBase<SocketInteractionContext>
     {
-        private MongoClient mongoClient = new(Storage.TestBotDatabaseConnectionString);
+        private MongoClient mongoClient = new(Storage.MongoDBConnectionString);
 
         [SlashCommand("level", "Displays the user's current rank.")]
         public async Task HandleRank(SocketUser user = null)
