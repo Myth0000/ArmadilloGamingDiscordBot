@@ -45,7 +45,6 @@ namespace ArmadilloGamingDiscordBot
             slashCommands.Log += async (LogMessage msg) => { Console.WriteLine(msg); };
             _client.MessageReceived += clientEvents.MessageRecievedEvent;
 
-
             _client.Ready += async () =>
             {
                 Console.WriteLine("Bot is ready!");
