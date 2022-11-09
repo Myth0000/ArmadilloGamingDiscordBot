@@ -12,7 +12,7 @@ namespace ArmadilloGamingDiscordBot
     public static class Storage
     {
         // MongoDB connection strings
-        public static string MongoDBConnectionString { get { return ArmadilloGamingDatabaseConnectionString; } }
+        public static string MongoDBConnectionString { get { return TestBotDatabaseConnectionString; } }
         private static string ArmadilloGamingDatabaseConnectionString { get { return "mongodb+srv://Myth0000:JhgZ5shGWcxj3kEj@usercluster.djfruor.mongodb.net/?retryWrites=true&w=majority"; } }
         private static string TestBotDatabaseConnectionString { get { return "mongodb+srv://Myth:JyCgBey037w7bfMt@cluster0.clsz5ty.mongodb.net/?retryWrites=true&w=majority"; } }
 

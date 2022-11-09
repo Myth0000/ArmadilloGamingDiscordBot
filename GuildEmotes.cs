@@ -13,7 +13,7 @@ namespace ArmadilloGamingDiscordBot
     {
         // armadillogaming : <:armadillo:911247664094539777>"
         // test server : <:armadillo:1032404142989246506>
-        public static string armadillo { get { return "<:armadillo:911247664094539777>"; } }
+        public static string armadillo { get { return "<:Armadillo:1039306862740381716>"; } }
         public static string armadilloCoin { get { return "<:ArmadilloCoin:1036766409671327825>"; } }
 
     }
