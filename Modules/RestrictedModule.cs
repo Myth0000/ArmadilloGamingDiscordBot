@@ -16,12 +16,12 @@ namespace ArmadilloGamingDiscordBot.Modules
     /// <summary>
     /// These commands are exclusive to the owner of the discord bot since they are mostly used to edit the database, etc.
     /// </summary>
-    [RequireOwner]
+    //[RequireOwner]
     public class RestrictedModule : InteractionModuleBase<SocketInteractionContext>
     {
         MongoClient mongoClient = new MongoClient(Storage.MongoDBConnectionString);
-/*
 
+        /*
         [SlashCommand("quickfix", "Rolls in the new Virtual Items Update.")]
         public async Task HandleVirtualItemsUpdate()
         {
@@ -81,9 +81,9 @@ namespace ArmadilloGamingDiscordBot.Modules
 
             Context.Channel.SendMessageAsync("Successfully gave people their stuff.");
         }
-*/
 
-        /*   // create a command that will check if a user doesn't have a certain property in User class, if they don't have it then add it to their data
+
+           // create a command that will check if a user doesn't have a certain property in User class, if they don't have it then add it to their data
            [SlashCommand("updateuserdata", "DANGER! Developer only command. Updates UserDatabase to keep it up to date.")]
            public async Task HandleUpdateUserData()
            {
@@ -186,9 +186,9 @@ namespace ArmadilloGamingDiscordBot.Modules
            }
 
 
-   */
+   
 
-
+        */
 
 
 
@@ -200,7 +200,7 @@ namespace ArmadilloGamingDiscordBot.Modules
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        /* 
+        
          [SlashCommand("virtualitems", "Displays all the Virtual Items in the database")]
          public async Task HandleVirtualItems()
          {
@@ -248,14 +248,17 @@ namespace ArmadilloGamingDiscordBot.Modules
 
 
 
-         [SlashCommand("givevirtualitem", "Gives a Virtual Item to the user.")]
+         [SlashCommand("grantitem", "Gives a Virtual Item to the user.")]
          public async Task HandleGiveVirtualItem([Summary("item", "Name of the Virtual Item")] string item, [Summary("user", "User to give the Virtual Item to.")] SocketUser user = null)
          {
-             user ??= Context.User;
-             VirtualItem virtualItem = VirtualItemSystem.GetItemFromDatabase(mongoClient, item);
-             VirtualItemSystem.AddItemToUserInventory(mongoClient, virtualItem, user.Id);
-             await RespondAsync($"{user.Mention} has been given {virtualItem.EmoteId}");
-         }
+            try
+            {
+                user ??= Context.User;
+                VirtualItem virtualItem = VirtualItemSystem.GetItemFromDatabase(mongoClient, item);
+                VirtualItemSystem.AddItemToUserInventory(mongoClient, virtualItem, user.Id);
+                await RespondAsync($"{user.Mention} has been given {virtualItem.EmoteId}");
+            } catch(Exception ex) { Console.WriteLine(ex); }
+        }
 
 
 
@@ -279,7 +282,7 @@ namespace ArmadilloGamingDiscordBot.Modules
 
 
 
-         [SlashCommand("copytestdatatomain", "Copies the data from the test database to the main database.")]
+         /*[SlashCommand("copytestdatatomain", "Copies the data from the test database to the main database.")]
          public async Task HandleCopyDatabase([Choice("ArmadilloGaming", "ArmadilloGaming"), Choice("Test", "Test"), Summary("copyfrom", "The cluster you want to copy from.")]string copyfrom, string database, string collection)
          {
 
@@ -311,7 +314,7 @@ namespace ArmadilloGamingDiscordBot.Modules
                  return;
              }
 
-
+        
          }
  */
 

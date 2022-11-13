@@ -11,6 +11,9 @@ namespace ArmadilloGamingDiscordBot.Blueprints
     [BsonIgnoreExtraElements]
     public class VirtualItem
     {
+        /// <summary>
+        /// An unique Id exclusive to this object.
+        /// </summary>
         public long Id { get; set; } = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
         public string Name { get; set; }
         public string Description { get; set; }
