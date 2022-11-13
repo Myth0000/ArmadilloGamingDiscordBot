@@ -57,8 +57,14 @@ namespace ArmadilloGamingDiscordBot.Modules
                .WithLabel("Cancel Trade")
                .WithStyle(ButtonStyle.Danger);
 
+                ButtonBuilder acceptTradeButton = new ButtonBuilder()
+               .WithCustomId($"trade_accept:{tradeThreadChannel.Id}")
+               .WithLabel("Accept Trade")
+               .WithStyle(ButtonStyle.Success);
+
                 ComponentBuilder components = new ComponentBuilder()
-                    .WithButton(cancelTradeButton);
+                    .WithButton(cancelTradeButton)
+                    .WithButton(acceptTradeButton);
 
                 // sends trade menu for the traders to select their items for trade
                 await tradeThreadChannel.SendMessageAsync(embed: tradeInformationEmbed.Build(), components: components.Build());
@@ -132,16 +138,22 @@ namespace ArmadilloGamingDiscordBot.Modules
             if(Context.User.Id != trader.GuildUserId) { await RespondAsync("This is not your trade menu.", ephemeral: true); return; }
 
             string tradeItems = "";
+            List<VirtualItem> virtualItemsForTrade = new List<VirtualItem>();
 
             foreach(string input in inputs)
             {
-                tradeItems += $"{VirtualItemSystem.GetItemFromDatabase(mongoClient, input).EmoteId} ";
+                VirtualItem virtualItem = VirtualItemSystem.GetItemFromDatabase(mongoClient, input);
+                tradeItems += $"{virtualItem.EmoteId} ";
+                virtualItemsForTrade.Add(virtualItem);
+
             }
 
             Embed newEmbedTradeMenu = TradeSystem.TradeMenuEmbed(user).ToEmbedBuilder()
                 .AddField("Items for Trade", tradeItems)
                 .Build();
 
+
+            TradeSystem.AddItemsToTraderVirtualItems(mongoClient, Convert.ToUInt64(messageId), virtualItemsForTrade);
 
             // modify message with new items for trade
             await (tradeMenuMessage as IUserMessage).ModifyAsync(message =>
@@ -151,6 +163,25 @@ namespace ArmadilloGamingDiscordBot.Modules
             });
         }
 
+
+        [ComponentInteraction("trade_accept:*")]
+        public async Task HandleTradeAcceptButton(string tradeThreadChannelId)
+        {
+            SocketThreadChannel tradeChannel = Context.Guild.GetThreadChannel(Convert.ToUInt64(tradeThreadChannelId));
+            Trade trade = TradeSystem.GetTrade(mongoClient, Convert.ToUInt64(tradeThreadChannelId));
+            
+            if (Context.User.Id == trade.Trader1.GuildUserId || Context.User.Id == trade.Trader2.GuildUserId)
+            {
+                Trader trader = TradeSystem.GetTrader(mongoClient, threadChannelIdAndUserId: Tuple.Create(Convert.ToUInt64(tradeThreadChannelId), Context.User.Id));
+
+                await Context.Channel.SendMessageAsync($"{Context.User.Mention} has accepted the trade.");
+                TradeSystem.SetUserTradeAccepted(mongoClient, trader);
+            }
+            else
+            {
+                await RespondAsync("You are not a part of this trade.", ephemeral: true);
+            }
+        }
         
     }
 }

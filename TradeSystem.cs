@@ -179,23 +179,101 @@ namespace ArmadilloGamingDiscordBot
 
 
 
-        public static Trader GetTrader(MongoClient mongoClient, ulong tradeMenuMessageId)
+        public static Trader GetTrader(MongoClient mongoClient, ulong tradeMenuMessageId = 0, Tuple<ulong, ulong> threadChannelIdAndUserId = null)
         {
             var tradeCollection = mongoClient.GetDatabase("TradeDatabase").GetCollection<BsonDocument>("Trade");
-            var trader1Filter = Builders<BsonDocument>.Filter.Eq("Trader1.TradeMenuMessageId", tradeMenuMessageId);
-            var trader2Filter = Builders<BsonDocument>.Filter.Eq("Trader2.TradeMenuMessageId", tradeMenuMessageId);
 
-            Trade trade;
-
-            try // check if messageId is from trader1
+            if (tradeMenuMessageId != 0)
             {
-                trade = BsonSerializer.Deserialize<Trade>(tradeCollection.Find<BsonDocument>(trader1Filter).First());
-                return trade.Trader1;
+                var trader1Filter = Builders<BsonDocument>.Filter.Eq("Trader1.TradeMenuMessageId", tradeMenuMessageId);
+                var trader2Filter = Builders<BsonDocument>.Filter.Eq("Trader2.TradeMenuMessageId", tradeMenuMessageId);
+                Trade trade;
+
+                try // check if messageId is from trader1
+                {
+                    trade = BsonSerializer.Deserialize<Trade>(tradeCollection.Find<BsonDocument>(trader1Filter).First());
+                    return trade.Trader1;
+                }
+                catch (Exception ex) // if not from trader1, it's from trader2
+                {
+                    trade = BsonSerializer.Deserialize<Trade>(tradeCollection.Find<BsonDocument>(trader2Filter).First());
+                    return trade.Trader2;
+                }
             }
-            catch(Exception ex) // if not from trader1, it's from trader2
+
+            if(threadChannelIdAndUserId != null)
             {
-                trade = BsonSerializer.Deserialize<Trade>(tradeCollection.Find<BsonDocument>(trader2Filter).First());
-                return trade.Trader2;
+                ulong tradeThreadChannelId = threadChannelIdAndUserId.Item1;
+                ulong userId = threadChannelIdAndUserId.Item2;
+
+                var tradeFilter = Builders<BsonDocument>.Filter.Eq("TradeThreadChannelId", tradeThreadChannelId);
+                Trade trade = BsonSerializer.Deserialize<Trade>(tradeCollection.Find<BsonDocument>(tradeFilter).First());
+
+                if(trade.Trader1.GuildUserId == userId)
+                {
+                    return trade.Trader1;
+                }
+                else
+                {
+                    return trade.Trader2;
+                }
+            }
+
+            return null;
+        }
+
+
+
+
+        public static void SetUserTradeAccepted(MongoClient mongoClient, Trader trader, bool boolean = true)
+        {
+            var tradeCollection = mongoClient.GetDatabase("TradeDatabase").GetCollection<BsonDocument>("Trade");
+            var trade = GetTrade(mongoClient, tradeMessageId: trader.TradeMenuMessageId);
+            var tradeFilter = Builders<BsonDocument>.Filter.Eq("TradeThreadChannelId", trade.TradeThreadChannelId);
+
+            if(trade.Trader1.GuildUserId == trader.GuildUserId)
+            {
+                UpdateUserTradeAccepted("Trader1");
+            }
+            else
+            {
+                UpdateUserTradeAccepted("Trader2");
+            }
+
+            void UpdateUserTradeAccepted(string _trader)
+            {
+                var updateTradeAccepted = Builders<BsonDocument>.Update.Set($"{_trader}.TradeAccepted", boolean);
+                tradeCollection.UpdateOne(tradeFilter, updateTradeAccepted);
+            }
+        }
+
+
+
+
+        public static void AddItemsToTraderVirtualItems(MongoClient mongoClient, ulong tradeMenuMessageId, List<VirtualItem> virtualItems)
+        {
+            Trade trade = GetTrade(mongoClient, tradeMessageId: tradeMenuMessageId);
+            Trader trader = GetTrader(mongoClient, tradeMenuMessageId: tradeMenuMessageId);
+
+            trader.VirtualItems = virtualItems;
+
+            var tradeCollection = mongoClient.GetDatabase("TradeDatabase").GetCollection<BsonDocument>("Trade");
+            var tradeFilter = Builders<BsonDocument>.Filter.Eq("TradeThreadChannelId", trade.TradeThreadChannelId);
+
+
+            if (trade.Trader1.GuildUserId == trader.GuildUserId)
+            {
+                UpdateTraderVirtualItems("Trader1");
+            }
+            else
+            {
+                UpdateTraderVirtualItems("Trader2");
+            }
+
+            void UpdateTraderVirtualItems(string _trader)
+            {
+                var updateVirtualItems = Builders<BsonDocument>.Update.Set($"{_trader}.VirtualItems", trader.VirtualItems);
+                tradeCollection.UpdateOne(tradeFilter, updateVirtualItems);
             }
         }
     }
