@@ -176,12 +176,75 @@ namespace ArmadilloGamingDiscordBot.Modules
 
                 await Context.Channel.SendMessageAsync($"{Context.User.Mention} has accepted the trade.");
                 TradeSystem.SetUserTradeAccepted(mongoClient, trader);
+
+                if(TradeSystem.TradeAccepted(mongoClient, trade))
+                {
+                    // send a new message to confirm the trade
+
+                    Embed confirmTradeEmbed = new EmbedBuilder()
+                        .WithAuthor("Confirm Trade", iconUrl: Context.Guild.IconUrl)
+                        .WithDescription("To proceed with the trade, please click Confirm.")
+                        .Build();
+
+                    ButtonBuilder confirmButton = new ButtonBuilder()
+                        .WithCustomId($"accept_trade_confirmation:{tradeThreadChannelId}")
+                        .WithLabel("Confirm")
+                        .WithStyle(ButtonStyle.Success);
+
+                    ButtonBuilder declineTrade = new ButtonBuilder()
+                       .WithCustomId($"decline_trade_confirmation:{tradeThreadChannelId}")
+                       .WithLabel("Decline")
+                       .WithStyle(ButtonStyle.Danger);
+
+                    ComponentBuilder components = new ComponentBuilder()
+                        .WithButton(confirmButton)
+                        .WithButton(declineTrade);
+
+                    await tradeChannel.SendMessageAsync(embed: confirmTradeEmbed, components: components.Build());
+                }
             }
             else
             {
                 await RespondAsync("You are not a part of this trade.", ephemeral: true);
             }
         }
-        
+
+
+        [ComponentInteraction("accept_trade_confirmation:*")]
+        public async Task HandleAcceptTradeConfirmation(string tradeThreadChannelId)
+        {
+            Trade trade = TradeSystem.GetTrade(mongoClient, threadChannelId: Convert.ToUInt64(tradeThreadChannelId));
+
+            if (Context.User.Id == trade.Trader1.GuildUserId || Context.User.Id == trade.Trader2.GuildUserId)
+            {
+                // give trade items to trader 2
+                foreach (VirtualItem item in trade.Trader1.VirtualItems)
+                {
+                    VirtualItemSystem.AddItemToUserInventory(mongoClient, item, trade.Trader2.GuildUserId);
+                    VirtualItemSystem.RemoveItemToUserInventory(mongoClient, item, trade.Trader1.GuildUserId);
+                }
+
+                // give trade items to trader 2
+                foreach (VirtualItem item in trade.Trader2.VirtualItems)
+                {
+                    VirtualItemSystem.AddItemToUserInventory(mongoClient, item, trade.Trader1.GuildUserId);
+                    VirtualItemSystem.RemoveItemToUserInventory(mongoClient, item, trade.Trader2.GuildUserId);
+                }
+
+                await Context.Channel.SendMessageAsync("Trade Successful!");
+            }
+            else
+            {
+                await RespondAsync("This is not your trade!", ephemeral: true);
+            }
+        }
+
+
+        [ComponentInteraction("decline_trade_confirmation:*")]
+        public async Task HandleDeclineTradeConfirmation(string tradeThreadChannelId)
+        {
+
+        }
+
     }
 }

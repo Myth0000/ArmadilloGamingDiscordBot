@@ -276,5 +276,22 @@ namespace ArmadilloGamingDiscordBot
                 tradeCollection.UpdateOne(tradeFilter, updateVirtualItems);
             }
         }
+
+
+
+
+        /// <summary>
+        /// Returns true if both traders have accepted the trade
+        /// </summary>
+        /// <returns></returns>
+        public static bool TradeAccepted(MongoClient mongoClient, Trade _trade)
+        {
+            var tradeCollection = mongoClient.GetDatabase("TradeDatabase").GetCollection<BsonDocument>("Trade");
+            var tradeFilter = Builders<BsonDocument>.Filter.Eq("TradeThreadChannelId", _trade.TradeThreadChannelId);
+
+            Trade trade = BsonSerializer.Deserialize<Trade>(tradeCollection.Find<BsonDocument>(tradeFilter).First());
+
+            if((trade.Trader1.TradeAccepted == true) && (trade.Trader2.TradeAccepted == true)) { return true; } return false;
+        }
     }
 }

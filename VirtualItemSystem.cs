@@ -104,10 +104,35 @@ namespace ArmadilloGamingDiscordBot
             var updateInventory = Builders<BsonDocument>.Update.Set("Inventory", user.Inventory);
             userCollection.UpdateOne(userFilter, updateInventory);           
         }
-    
-    
-    
-    
+
+
+
+
+        public static void RemoveItemToUserInventory(MongoClient mongoClient, VirtualItem item, ulong userId)
+        {
+            var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
+            var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", userId);
+            User user = BsonSerializer.Deserialize<User>(userCollection.Find<BsonDocument>(userFilter).First());
+
+            // Removes the item to the inventory
+
+            if (user.Inventory == null)
+            {
+                user.Inventory = new List<VirtualItem>() { item };
+            }
+            else
+            {
+                user.Inventory.RemoveAt(user.Inventory.FindIndex(_item => _item.Id == item.Id));
+            }
+
+            // updates inventory in the database
+            var updateInventory = Builders<BsonDocument>.Update.Set("Inventory", user.Inventory);
+            userCollection.UpdateOne(userFilter, updateInventory);
+        }
+
+
+
+
         public static VirtualItem GetRandomItemWithObtaining(MongoClient mongoClient, string obtaining)
         {
             var virtualItemCollection = mongoClient.GetDatabase("VirtualItemDatabase").GetCollection<BsonDocument>("VirtualItem");
