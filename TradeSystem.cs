@@ -105,7 +105,7 @@ namespace ArmadilloGamingDiscordBot
 
 
 
-        public static Trade CreateNewTrade(MongoClient mongoClient, ulong tradeThreadChannelId, 
+        public static Trade CreateNewTrade(MongoClient mongoClient, ulong tradeThreadChannelId, ulong tradeDescriptionMessageId,
             ulong user1Id, ulong user1TradeMenuMessageId, ulong user2Id, ulong user2TradeMenuMessageId)
         {
             var tradeCollection = mongoClient.GetDatabase("TradeDatabase").GetCollection<BsonDocument>("Trade");
@@ -113,6 +113,7 @@ namespace ArmadilloGamingDiscordBot
             var trade = new Trade()
             {
                 TradeThreadChannelId = tradeThreadChannelId,
+                TradeDescriptionMessageId = tradeDescriptionMessageId,
                 Trader1 = new Trader()
                 {
                     GuildUserId = user1Id,
@@ -284,7 +285,7 @@ namespace ArmadilloGamingDiscordBot
         /// Returns true if both traders have accepted the trade
         /// </summary>
         /// <returns></returns>
-        public static bool TradeAccepted(MongoClient mongoClient, Trade _trade)
+        public static bool PlayersTradeAccepted(MongoClient mongoClient, Trade _trade)
         {
             var tradeCollection = mongoClient.GetDatabase("TradeDatabase").GetCollection<BsonDocument>("Trade");
             var tradeFilter = Builders<BsonDocument>.Filter.Eq("TradeThreadChannelId", _trade.TradeThreadChannelId);
@@ -292,6 +293,74 @@ namespace ArmadilloGamingDiscordBot
             Trade trade = BsonSerializer.Deserialize<Trade>(tradeCollection.Find<BsonDocument>(tradeFilter).First());
 
             if((trade.Trader1.TradeAccepted == true) && (trade.Trader2.TradeAccepted == true)) { return true; } return false;
+        }
+
+
+
+
+        /// <summary>
+        /// Returns true if both traders have accepted the trade
+        /// </summary>
+        /// <returns></returns>
+        public static bool AllPlayersConfirmedTrade(MongoClient mongoClient, Trade trade)
+        {
+            if ((trade.Trader1.TradeConfirmed == true) && (trade.Trader2.TradeConfirmed == true)) { return true; }
+            return false;
+        }
+
+
+
+
+        /// <summary>
+        /// Returns true if both traders have accepted the trade
+        /// </summary>
+        /// <returns></returns>
+        public static void SetTradeConfirmedToTrue(MongoClient mongoClient, SocketInteractionContext context, Trade _trade)
+        {
+            var tradeCollection = mongoClient.GetDatabase("TradeDatabase").GetCollection<BsonDocument>("Trade");
+            var tradeFilter = Builders<BsonDocument>.Filter.Eq("TradeThreadChannelId", _trade.TradeThreadChannelId);
+
+            if(context.User.Id == _trade.Trader1.GuildUserId)
+            {
+                var updateTradeConfirmed = Builders<BsonDocument>.Update.Set("Trader1.TradeConfirmed", true);
+                tradeCollection.UpdateOne(tradeFilter, updateTradeConfirmed);
+                return;
+            }
+            else if (context.User.Id == _trade.Trader2.GuildUserId)
+            {
+                var updateTradeConfirmed = Builders<BsonDocument>.Update.Set("Trader2.TradeConfirmed", true);
+                tradeCollection.UpdateOne(tradeFilter, updateTradeConfirmed);
+                return;
+            }
+
+        }
+
+
+
+
+        public static async void RemoveAllMessageComponents(SocketInteractionContext context, Trade trade)
+        {
+            IThreadChannel tradeChannel = context.Guild.GetThreadChannel(trade.TradeThreadChannelId);
+            IUserMessage message1 = (tradeChannel.GetMessageAsync(trade.Trader1.TradeMenuMessageId).Result as IUserMessage);
+            IUserMessage message2 = (tradeChannel.GetMessageAsync(trade.Trader2.TradeMenuMessageId).Result as IUserMessage);
+
+            await message1.ModifyAsync(message => message.Components = new ComponentBuilder().Build());
+            await message2.ModifyAsync(message => message.Components = new ComponentBuilder().Build());
+        }
+
+
+
+
+        public static async void RemoveAllMessageComponentFrom(MongoClient mongoClient, SocketInteractionContext context, ulong messageId)
+        {
+            var tradeCollection = mongoClient.GetDatabase("TradeDatabase").GetCollection<BsonDocument>("Trade");
+            var tradeFilter = Builders<BsonDocument>.Filter.Eq("TradeDescriptionMessageId", messageId);
+            Trade trade = BsonSerializer.Deserialize<Trade>(tradeCollection.Find<BsonDocument>(tradeFilter).First());
+
+            IThreadChannel tradeChannel = context.Guild.GetThreadChannel(trade.TradeThreadChannelId);
+            IUserMessage message1 = (tradeChannel.GetMessageAsync(messageId).Result as IUserMessage);
+
+            await message1.ModifyAsync(message => message.Components = new ComponentBuilder().Build());
         }
     }
 }

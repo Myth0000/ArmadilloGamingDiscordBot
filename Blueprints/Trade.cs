@@ -17,6 +17,7 @@ namespace ArmadilloGamingDiscordBot.Blueprints
     public class Trade
     {
         public ulong TradeThreadChannelId { get; set; }
+        public ulong TradeDescriptionMessageId { get; set; }
         public Trader Trader1 { get; set; }
         public Trader Trader2 { get; set; }
     }
@@ -27,5 +28,6 @@ namespace ArmadilloGamingDiscordBot.Blueprints
         public ulong TradeMenuMessageId { get; set; }
         public List<VirtualItem> VirtualItems { get; set; } = new List<VirtualItem>();
         public bool TradeAccepted { get; set; } = false;
+        public bool TradeConfirmed { get; set; } = false;
     }
 }

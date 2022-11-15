@@ -67,7 +67,7 @@ namespace ArmadilloGamingDiscordBot.Modules
                     .WithButton(acceptTradeButton);
 
                 // sends trade menu for the traders to select their items for trade
-                await tradeThreadChannel.SendMessageAsync(embed: tradeInformationEmbed.Build(), components: components.Build());
+                IUserMessage tradeDescriptionMessage = await tradeThreadChannel.SendMessageAsync(embed: tradeInformationEmbed.Build(), components: components.Build());
 
                 IUserMessage message1 = await tradeThreadChannel.SendMessageAsync(embed: TradeSystem.TradeMenuEmbed(tradeRequester));
                 await message1.ModifyAsync(message => message.Components = 
@@ -78,7 +78,7 @@ namespace ArmadilloGamingDiscordBot.Modules
                     TradeSystem.TradeMenuComponents(mongoClient, tradeRequestSentTo, $"tradeSelectMenu:{message2.Id}").Build());
 
                 // adds a new trade to the database
-                TradeSystem.CreateNewTrade(mongoClient, tradeThreadChannel.Id, tradeRequester.Id, message1.Id, tradeRequestSentTo.Id, message2.Id);
+                TradeSystem.CreateNewTrade(mongoClient, tradeThreadChannel.Id, tradeDescriptionMessage.Id, tradeRequester.Id, message1.Id, tradeRequestSentTo.Id, message2.Id);
             }
             else
             {
@@ -177,10 +177,9 @@ namespace ArmadilloGamingDiscordBot.Modules
                 await Context.Channel.SendMessageAsync($"{Context.User.Mention} has accepted the trade.");
                 TradeSystem.SetUserTradeAccepted(mongoClient, trader);
 
-                if(TradeSystem.TradeAccepted(mongoClient, trade))
+                if(TradeSystem.PlayersTradeAccepted(mongoClient, trade))
                 {
                     // send a new message to confirm the trade
-
                     Embed confirmTradeEmbed = new EmbedBuilder()
                         .WithAuthor("Confirm Trade", iconUrl: Context.Guild.IconUrl)
                         .WithDescription("To proceed with the trade, please click Confirm.")
@@ -200,6 +199,8 @@ namespace ArmadilloGamingDiscordBot.Modules
                         .WithButton(confirmButton)
                         .WithButton(declineTrade);
 
+                    TradeSystem.RemoveAllMessageComponents(Context, trade);
+                    TradeSystem.RemoveAllMessageComponentFrom(mongoClient, Context, trade.TradeDescriptionMessageId);
                     await tradeChannel.SendMessageAsync(embed: confirmTradeEmbed, components: components.Build());
                 }
             }
@@ -215,23 +216,30 @@ namespace ArmadilloGamingDiscordBot.Modules
         {
             Trade trade = TradeSystem.GetTrade(mongoClient, threadChannelId: Convert.ToUInt64(tradeThreadChannelId));
 
-            if (Context.User.Id == trade.Trader1.GuildUserId || Context.User.Id == trade.Trader2.GuildUserId)
+            if ((Context.User.Id == trade.Trader1.GuildUserId || Context.User.Id == trade.Trader2.GuildUserId))
             {
-                // give trade items to trader 2
-                foreach (VirtualItem item in trade.Trader1.VirtualItems)
-                {
-                    VirtualItemSystem.AddItemToUserInventory(mongoClient, item, trade.Trader2.GuildUserId);
-                    VirtualItemSystem.RemoveItemToUserInventory(mongoClient, item, trade.Trader1.GuildUserId);
-                }
+                TradeSystem.SetTradeConfirmedToTrue(mongoClient, Context, trade);
+                trade = TradeSystem.GetTrade(mongoClient, threadChannelId: Convert.ToUInt64(tradeThreadChannelId));
 
-                // give trade items to trader 2
-                foreach (VirtualItem item in trade.Trader2.VirtualItems)
-                {
-                    VirtualItemSystem.AddItemToUserInventory(mongoClient, item, trade.Trader1.GuildUserId);
-                    VirtualItemSystem.RemoveItemToUserInventory(mongoClient, item, trade.Trader2.GuildUserId);
-                }
 
-                await Context.Channel.SendMessageAsync("Trade Successful!");
+                if (TradeSystem.AllPlayersConfirmedTrade(mongoClient, trade))
+                {
+                    // give trade items to trader 2
+                    foreach (VirtualItem item in trade.Trader1.VirtualItems)
+                    {
+                        VirtualItemSystem.AddItemToUserInventory(mongoClient, item, trade.Trader2.GuildUserId);
+                        VirtualItemSystem.RemoveItemToUserInventory(mongoClient, item, trade.Trader1.GuildUserId);
+                    }
+
+                    // give trade items to trader 2
+                    foreach (VirtualItem item in trade.Trader2.VirtualItems)
+                    {
+                        VirtualItemSystem.AddItemToUserInventory(mongoClient, item, trade.Trader1.GuildUserId);
+                        VirtualItemSystem.RemoveItemToUserInventory(mongoClient, item, trade.Trader2.GuildUserId);
+                    }
+
+                    await Context.Channel.SendMessageAsync("Trade Successful!");
+                }
             }
             else
             {
