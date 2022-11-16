@@ -351,16 +351,25 @@ namespace ArmadilloGamingDiscordBot
 
 
 
-        public static async void RemoveAllMessageComponentFrom(MongoClient mongoClient, SocketInteractionContext context, ulong messageId)
+        public static async void RemoveAllMessageComponentFrom(SocketInteractionContext context, ulong messageId)
         {
-            var tradeCollection = mongoClient.GetDatabase("TradeDatabase").GetCollection<BsonDocument>("Trade");
-            var tradeFilter = Builders<BsonDocument>.Filter.Eq("TradeDescriptionMessageId", messageId);
-            Trade trade = BsonSerializer.Deserialize<Trade>(tradeCollection.Find<BsonDocument>(tradeFilter).First());
-
-            IThreadChannel tradeChannel = context.Guild.GetThreadChannel(trade.TradeThreadChannelId);
-            IUserMessage message1 = (tradeChannel.GetMessageAsync(messageId).Result as IUserMessage);
+            IUserMessage message1 = (context.Channel.GetMessageAsync(messageId).Result as IUserMessage);
 
             await message1.ModifyAsync(message => message.Components = new ComponentBuilder().Build());
+        }
+
+
+
+
+        public static ComponentBuilder CloseTradeComponents(ulong tradeThreadChannelId)
+        {
+            ButtonBuilder closeTradeChannelButton = new ButtonBuilder()
+                .WithCustomId($"trade_cancel:{tradeThreadChannelId}")
+                .WithLabel("Close Thread")
+                .WithStyle(ButtonStyle.Danger);
+
+            return new ComponentBuilder()
+                .WithButton(closeTradeChannelButton);
         }
     }
 }
