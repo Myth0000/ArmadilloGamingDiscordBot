@@ -282,6 +282,24 @@ namespace ArmadilloGamingDiscordBot.Modules
 
 
 
+        [SlashCommand("deletetrades", "Deletes all the threads from discord & TradeDatabase.")]
+        public async Task HandleDeleteAllThreads()
+        {
+            foreach(var channel in Context.Guild.ThreadChannels)
+            {
+                channel.DeleteAsync();
+            }
+
+            var tradeCollection = mongoClient.GetDatabase("TradeDatabase").GetCollection<BsonDocument>("Trade");
+            var tradeBsonDocs = tradeCollection.Find<BsonDocument>(new BsonDocument()).ForEachAsync(document =>
+            {
+                tradeCollection.DeleteOne(document);
+            });
+        }
+
+
+
+
          /*[SlashCommand("copytestdatatomain", "Copies the data from the test database to the main database.")]
          public async Task HandleCopyDatabase([Choice("ArmadilloGaming", "ArmadilloGaming"), Choice("Test", "Test"), Summary("copyfrom", "The cluster you want to copy from.")]string copyfrom, string database, string collection)
          {

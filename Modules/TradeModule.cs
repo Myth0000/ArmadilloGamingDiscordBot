@@ -100,10 +100,6 @@ namespace ArmadilloGamingDiscordBot.Modules
                 await RespondAsync($"{tradeRequestSentTo.Mention} has declined the trade request from {tradeRequester.Mention}");
                 message.ModifyAsync(msg => msg.Components = TradeSystem.TradeRequestComponent(Context,tradeRequestSentTo, true).Build());
             }
-            else
-            {
-                await RespondAsync("This trade request belongs to someone else.", ephemeral: true);
-            }
         }
 
 
@@ -119,10 +115,6 @@ namespace ArmadilloGamingDiscordBot.Modules
                 tradeChannel.DeleteAsync();
                 TradeSystem.DeleteTrade(mongoClient, Convert.ToUInt64(tradeThreadChannelId));
             }
-            else
-            {
-                await RespondAsync("You do not have permission to close this thread.", ephemeral: true);
-            }
         }
 
 
@@ -135,7 +127,7 @@ namespace ArmadilloGamingDiscordBot.Modules
             IThreadChannel tradeChannel = Context.Guild.GetThreadChannel(trade.TradeThreadChannelId);
             IMessage tradeMenuMessage = tradeChannel.GetMessageAsync(Convert.ToUInt64(messageId)).Result;
 
-            if(Context.User.Id != trader.GuildUserId) { await RespondAsync("This is not your trade menu.", ephemeral: true); return; }
+            if(Context.User.Id != trader.GuildUserId) { return; }
 
             string tradeItems = "";
             List<VirtualItem> virtualItemsForTrade = new List<VirtualItem>();
@@ -173,11 +165,31 @@ namespace ArmadilloGamingDiscordBot.Modules
             if (Context.User.Id == trade.Trader1.GuildUserId || Context.User.Id == trade.Trader2.GuildUserId)
             {
                 Trader trader = TradeSystem.GetTrader(mongoClient, threadChannelIdAndUserId: Tuple.Create(Convert.ToUInt64(tradeThreadChannelId), Context.User.Id));
+                IUserMessage tradeMenuMessage = tradeChannel.GetMessageAsync(TradeSystem.GetCurrentTrader(Context, trade).TradeMenuMessageId).Result as IUserMessage;
 
-                await Context.Channel.SendMessageAsync($"{Context.User.Mention} has accepted the trade.");
                 TradeSystem.SetUserTradeAccepted(mongoClient, trader);
+                TradeSystem.RemoveAllMessageComponentFrom(Context, TradeSystem.GetCurrentTrader(Context, trade).TradeMenuMessageId);
 
-                if(TradeSystem.PlayersTradeAccepted(mongoClient, trade))
+                if(TradeSystem.GetCurrentTrader(Context, trade).VirtualItems.Count == 0)
+                {
+                    Embed newEmbedTradeMenu = TradeSystem.TradeMenuEmbed((Context.User as SocketGuildUser)).ToEmbedBuilder()
+                    .AddField("Items for Trade", "none")
+                    .WithColor(Color.Green)
+                    .Build();
+
+                    await tradeMenuMessage.ModifyAsync(message =>
+                    {
+                        message.Embed = newEmbedTradeMenu;
+                    });
+                }
+                else
+                {
+                    Embed newEmbed = tradeMenuMessage.Embeds.First().ToEmbedBuilder().WithColor(Color.Green).Build();
+
+                    await tradeMenuMessage.ModifyAsync(msg => { msg.Embed = newEmbed; Console.WriteLine(newEmbed.Color); });
+                }
+
+                if (TradeSystem.PlayersTradeAccepted(mongoClient, trade))
                 {   
                     // send a new message to confirm the trade
                     Embed confirmTradeEmbed = new EmbedBuilder()
@@ -201,14 +213,9 @@ namespace ArmadilloGamingDiscordBot.Modules
                         .WithButton(confirmButton)
                         .WithButton(declineTrade);
 
-                    TradeSystem.RemoveAllMessageComponents(Context, trade);
                     TradeSystem.RemoveAllMessageComponentFrom(Context, trade.TradeDescriptionMessageId);
                     await tradeConfirmationMessage.ModifyAsync(msg => msg.Components = components.Build());
                 }
-            }
-            else
-            {
-                await RespondAsync("You are not a part of this trade.", ephemeral: true);
             }
         }
 
@@ -222,12 +229,19 @@ namespace ArmadilloGamingDiscordBot.Modules
             {
                 TradeSystem.SetTradeConfirmedToTrue(mongoClient, Context, trade);
                 trade = TradeSystem.GetTrade(mongoClient, threadChannelId: Convert.ToUInt64(tradeThreadChannelId));
+                IUserMessage tradeConfirmationMessage = Context.Channel.GetMessageAsync(Convert.ToUInt64(tradeConfirmationMessageId)).Result as IUserMessage;
 
                 SocketGuildUser  trader1 = Context.Guild.GetUser(trade.Trader1.GuildUserId);
                 SocketGuildUser trader2 = Context.Guild.GetUser(trade.Trader2.GuildUserId);
 
                 string itemsRecievedByTrader1 = "";
                 string itemsRecievedByTrader2 = "";
+
+                Embed tradeConfirmationEmbed = tradeConfirmationMessage.Embeds.First() as Embed;
+                Embed newConfirmationEmbed = tradeConfirmationEmbed.ToEmbedBuilder()
+                    .WithDescription($"{tradeConfirmationEmbed.Description}\n{Context.User.Mention} ✅").Build();
+
+                await tradeConfirmationMessage.ModifyAsync(msg => { msg.Embed = newConfirmationEmbed; });
 
                 if (TradeSystem.AllPlayersConfirmedTrade(mongoClient, trade))
                 {
@@ -264,10 +278,6 @@ namespace ArmadilloGamingDiscordBot.Modules
                     TradeSystem.RemoveAllMessageComponentFrom(Context, Convert.ToUInt64(tradeConfirmationMessageId));
                 }
             }
-            else
-            {
-                await RespondAsync("This is not your trade!", ephemeral: true);
-            }
         }
 
 
@@ -275,7 +285,6 @@ namespace ArmadilloGamingDiscordBot.Modules
         public async Task HandleDeclineTradeConfirmation(string tradeThreadChannelId, string tradeConfirmationMessageId)
         {
             Trade trade = TradeSystem.GetTrade(mongoClient, threadChannelId: Convert.ToUInt64(tradeThreadChannelId));
-            IThreadChannel tradeChannel = Context.Guild.GetThreadChannel(trade.TradeThreadChannelId);
 
             if ((Context.User.Id == trade.Trader1.GuildUserId || Context.User.Id == trade.Trader2.GuildUserId))
             {
@@ -287,7 +296,7 @@ namespace ArmadilloGamingDiscordBot.Modules
                     .WithCurrentTimestamp()
                     .Build();
 
-                await RespondAsync(embed: tradeDeclinedEmbed, components: TradeSystem.CloseTradeComponents(trade.TradeThreadChannelId).Build());
+                await Context.Channel.SendMessageAsync(embed: tradeDeclinedEmbed, components: TradeSystem.CloseTradeComponents(trade.TradeThreadChannelId).Build());
             }
         }
 

@@ -371,5 +371,15 @@ namespace ArmadilloGamingDiscordBot
             return new ComponentBuilder()
                 .WithButton(closeTradeChannelButton);
         }
+
+
+
+
+        public static Trader GetCurrentTrader(SocketInteractionContext context, Trade _trade)
+        {
+            if(_trade.Trader1.GuildUserId == context.User.Id) { return _trade.Trader1; }
+            if (_trade.Trader2.GuildUserId == context.User.Id) { return _trade.Trader2; }
+            return null;
+        }
     }
 }
