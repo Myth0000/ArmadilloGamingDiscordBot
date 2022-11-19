@@ -188,7 +188,7 @@ namespace ArmadilloGamingDiscordBot.Modules
 
    
 
-        */
+        
 
 
 
@@ -300,7 +300,7 @@ namespace ArmadilloGamingDiscordBot.Modules
 
 
 
-         /*[SlashCommand("copytestdatatomain", "Copies the data from the test database to the main database.")]
+         [SlashCommand("copytestdatatomain", "Copies the data from the test database to the main database.")]
          public async Task HandleCopyDatabase([Choice("ArmadilloGaming", "ArmadilloGaming"), Choice("Test", "Test"), Summary("copyfrom", "The cluster you want to copy from.")]string copyfrom, string database, string collection)
          {
 

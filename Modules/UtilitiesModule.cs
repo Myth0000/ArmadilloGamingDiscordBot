@@ -102,7 +102,7 @@ namespace ArmadilloGamingDiscordBot.Modules
 
 
         [SlashCommand("help", "Helps inform you about how the bot functions.")]
-        public async Task HandleHelp([Choice("Slash Commands", "Slash Commands"), Choice("Levels", "Levels"), Choice("Shop", "Shop")] string topic = null)
+        public async Task HandleHelp([Choice("Slash Commands", "Slash Commands"), Choice("Levels", "Levels"), Choice("Shop", "Shop"), Choice("Virtual Items", "Virtual Items")] string topic = null)
         {
             EmbedBuilder helpEmbed = new EmbedBuilder();
             helpEmbed.WithAuthor($"{topic} Help", iconUrl:Context.Guild.IconUrl);
@@ -167,20 +167,31 @@ namespace ArmadilloGamingDiscordBot.Modules
                         (@$"
 **What is the shop?**
 {GuildEmotes.armadillo} The shop is a place to buy Virtual Items.
-                            
-**What is a Virtual Item?**
-{GuildEmotes.armadillo} Virtual Items are collectibles.
 
 **Shop Currency**
 {GuildEmotes.armadillo} {Storage.ArmadilloCoinEmoteId} Armadillo Coins
 
-**How do you obtain {Storage.ArmadilloCoinEmoteId} & Virtual Items?**
+**How do you obtain {Storage.ArmadilloCoinEmoteId}**
 {GuildEmotes.armadillo} Leveling up gives {Storage.ArmadilloCoinEmoteId}
-{GuildEmotes.armadillo} You gain a Virtual Item every 10 levels
-{GuildEmotes.armadillo} You can buy Virtual Items from the shop
 
 **Slash Commands associated with the shop**
 {GuildEmotes.armadillo} /shop
+{GuildEmotes.armadillo} /inventory
+                        ");
+                    break;
+                case "Virtual Items":
+                    helpEmbed.WithDescription
+                        (@$"
+**What is a Virtual Item?**
+{GuildEmotes.armadillo} Virtual Items are collectibles.
+
+**How do you obtain Virtual Items?**
+{GuildEmotes.armadillo} You gain a Virtual Item every 10 levels
+{GuildEmotes.armadillo} You can buy Virtual Items from the shop
+{GuildEmotes.armadillo} You can trade Virtual Items with other players
+
+**Slash Commands associated with Virtual Items**
+{GuildEmotes.armadillo} /trade
 {GuildEmotes.armadillo} /previewitem
 {GuildEmotes.armadillo} /inventory
                         ");
