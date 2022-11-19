@@ -381,5 +381,7 @@ namespace ArmadilloGamingDiscordBot
             if (_trade.Trader2.GuildUserId == context.User.Id) { return _trade.Trader2; }
             return null;
         }
+
+
     }
 }
