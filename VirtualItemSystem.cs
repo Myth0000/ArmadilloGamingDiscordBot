@@ -108,21 +108,20 @@ namespace ArmadilloGamingDiscordBot
 
 
 
-        public static void RemoveItemToUserInventory(MongoClient mongoClient, VirtualItem item, ulong userId)
+        public static void RemoveItemFromUserInventory(MongoClient mongoClient, VirtualItem item, ulong userId)
         {
             var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
             var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", userId);
             User user = BsonSerializer.Deserialize<User>(userCollection.Find<BsonDocument>(userFilter).First());
 
-            // Removes the item to the inventory
+            // Removes the item from the inventory
 
-            if (user.Inventory == null)
+            if ((user.Inventory != null))
             {
-                user.Inventory = new List<VirtualItem>() { item };
-            }
-            else
-            {
-                user.Inventory.RemoveAt(user.Inventory.FindIndex(_item => _item.Id == item.Id));
+                if (user.Inventory.Count != 0)
+                {
+                    user.Inventory.RemoveAt(user.Inventory.FindIndex(_item => _item.Id == item.Id));
+                }
             }
 
             // updates inventory in the database
@@ -143,6 +142,7 @@ namespace ArmadilloGamingDiscordBot
             var randomBsonItem = itemsBsonDocumentList[new Random().Next(0, itemsBsonDocumentList.Count)];
 
             VirtualItem virtualItem = BsonSerializer.Deserialize<VirtualItem>(randomBsonItem);
+            virtualItem.Id = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(); // creates a unique id for each item 
 
             return virtualItem;
         }

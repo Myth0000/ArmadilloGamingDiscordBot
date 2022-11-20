@@ -80,7 +80,7 @@ namespace ArmadilloGamingDiscordBot
                 foreach (VirtualItem item in inventory) // !! only up to 25 options can be added to it. Update this in the future to support 25+ options somehow..
                 {
                     Emote itemEmote = Emote.Parse(item.EmoteId);
-                    tradeItemsSelectMenu.AddOption($"{item.Rarity} {item.Name}", item.Name, emote: itemEmote);
+                    tradeItemsSelectMenu.AddOption($"{item.Rarity} {item.Name}", item.Id.ToString(), emote: itemEmote);
                 }
 
                 tradeItemsSelectMenu.MaxValues = inventory.Count;

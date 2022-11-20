@@ -142,15 +142,30 @@ namespace ArmadilloGamingDiscordBot.Modules
             if((Context.User.Id != trader.GuildUserId)) { return; }
             if (inputs[0] == "Empty Inventory") { await DeferAsync(); return; }
 
-                string tradeItems = "";
+            string tradeItems = "";
             List<VirtualItem> virtualItemsForTrade = new List<VirtualItem>();
 
-            foreach(string input in inputs)
-            {
-                VirtualItem virtualItem = VirtualItemSystem.GetItemFromDatabase(mongoClient, input);
-                tradeItems += $"{virtualItem.EmoteId} ";
-                virtualItemsForTrade.Add(virtualItem);
+            // foreach item in inputs
+            // go through each item in inv
+            // check if that item's name is = input, if true then add item & break
+            // also keep count of which index to start checking off of in inv 
+            // then repeat
 
+            List<VirtualItem> userInventory = VirtualItemSystem.GetUserInventory(mongoClient, user.Id);
+
+            // foreach input, if it has the same id as the one from the user's inv then add that item to virtualItemsForTrade
+            foreach (string inputItemIdString in inputs)
+            {
+                long inputItemId = Convert.ToInt64(inputItemIdString);
+
+                foreach(VirtualItem item in userInventory)
+                {
+                    if(item.Id == inputItemId)
+                    {
+                        tradeItems += $"{item.EmoteId} ";
+                        virtualItemsForTrade.Add(item);
+                    }
+                }
             }
 
             Embed newEmbedTradeMenu = TradeSystem.TradeMenuEmbed(user).ToEmbedBuilder()
@@ -266,7 +281,7 @@ namespace ArmadilloGamingDiscordBot.Modules
                     foreach (VirtualItem item in trade.Trader1.VirtualItems)
                     {
                         VirtualItemSystem.AddItemToUserInventory(mongoClient, item, trade.Trader2.GuildUserId);
-                        VirtualItemSystem.RemoveItemToUserInventory(mongoClient, item, trade.Trader1.GuildUserId);
+                        VirtualItemSystem.RemoveItemFromUserInventory(mongoClient, item, trade.Trader1.GuildUserId);
 
                         itemsRecievedByTrader2 += $"{GuildEmotes.armadillo} {item.EmoteId}\n";
                     }
@@ -275,7 +290,7 @@ namespace ArmadilloGamingDiscordBot.Modules
                     foreach (VirtualItem item in trade.Trader2.VirtualItems)
                     {
                         VirtualItemSystem.AddItemToUserInventory(mongoClient, item, trade.Trader1.GuildUserId);
-                        VirtualItemSystem.RemoveItemToUserInventory(mongoClient, item, trade.Trader2.GuildUserId);
+                        VirtualItemSystem.RemoveItemFromUserInventory(mongoClient, item, trade.Trader2.GuildUserId);
 
                         itemsRecievedByTrader1 += $"{GuildEmotes.armadillo} {item.EmoteId}\n";
                     }
