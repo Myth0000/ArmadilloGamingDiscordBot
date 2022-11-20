@@ -39,7 +39,7 @@ namespace ArmadilloGamingDiscordBot
             var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
             User user = BsonSerializer.Deserialize<User>(userCollection.Find<BsonDocument>(userFilter).First());
             Rank userRank = user.Rank;
-
+            
             if(userRank.CurrentExp >= userRank.MaxExp)
             {
                 var updateCurrentExp = Builders<BsonDocument>.Update.Set("Rank.CurrentExp", (userRank.CurrentExp - userRank.MaxExp));
@@ -57,15 +57,16 @@ namespace ArmadilloGamingDiscordBot
                 // every 10 levels, the user will get a random Virtual Item on level up
                 if(userRank.Level % 10 == 0)
                 {
+
                     VirtualItem virtualItem = VirtualItemSystem.GetRandomItemWithObtaining(mongoClient, "Level Up Rewards");
 
                     VirtualItemSystem.AddItemToUserInventory(mongoClient, virtualItem, message.Author.Id);
 
-                    message.Channel.SendMessageAsync($"{GuildEmotes.armadillo} {message.Author.Mention} has leveled up to level {userRank.Level}! You got a {virtualItem.Rarity} {virtualItem.EmoteId} for leveling up.");
+                    GetLevelUpMessagesTextChannel(mongoClient, (message.Channel as SocketGuildChannel).Guild).SendMessageAsync($"{GuildEmotes.armadillo} **{message.Author.Username}#{message.Author.Discriminator}** has leveled up to level {userRank.Level}! You got a {virtualItem.Rarity} {virtualItem.EmoteId} for leveling up.");
                 }
                 else
                 {
-                    message.Channel.SendMessageAsync($"{GuildEmotes.armadillo} {message.Author.Mention} has leveled up to level {userRank.Level}! +{Storage.ArmadilloCoinEmoteId}{userRank.Level + 5}");
+                    GetLevelUpMessagesTextChannel(mongoClient, (message.Channel as SocketGuildChannel).Guild).SendMessageAsync($"{GuildEmotes.armadillo} **{message.Author.Username}#{message.Author.Discriminator}** has leveled up to level {userRank.Level}! +{Storage.ArmadilloCoinEmoteId}{userRank.Level + 5}");
                 }
             }
 
@@ -127,6 +128,16 @@ namespace ArmadilloGamingDiscordBot
             userCollection.UpdateOne(userFilter, unixTimeUpdate);
             
             if(timePastSinceLastExpGain > rankSettings.ExpGainCooldown) { return false; } else { return true; }
+        }
+
+
+
+
+        public static SocketTextChannel GetLevelUpMessagesTextChannel(MongoClient mongoClient, SocketGuild guild)
+        {
+            var settingsCollection = mongoClient.GetDatabase("SettingsDatabase").GetCollection<BsonDocument>("Settings");
+            Settings settings = BsonSerializer.Deserialize<Settings>(settingsCollection.Find<BsonDocument>(new BsonDocument()).First());
+            return guild.GetTextChannel(settings.LevelUpMessagesChannelId);
         }
     }
 

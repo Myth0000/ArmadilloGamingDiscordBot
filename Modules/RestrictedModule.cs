@@ -16,12 +16,35 @@ namespace ArmadilloGamingDiscordBot.Modules
     /// <summary>
     /// These commands are exclusive to the owner of the discord bot since they are mostly used to edit the database, etc.
     /// </summary>
-    //[RequireOwner]
+    [RequireOwner]
     public class RestrictedModule : InteractionModuleBase<SocketInteractionContext>
     {
         MongoClient mongoClient = new MongoClient(Storage.MongoDBConnectionString);
 
         /*
+        [SlashCommand("randomizeallitemid", "randomizes all virtual item ids into something else")]
+        public async Task HandleRandomizeAllitemId()
+        {
+            await DeferAsync();
+            var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
+            await userCollection.Find(new BsonDocument()).ForEachAsync<BsonDocument>(document => {
+                User user = BsonSerializer.Deserialize<User>(document);
+
+                foreach(VirtualItem item in user.Inventory)
+                {
+                    item.Id = new Random().NextInt64(1000000000000, 9999999999999);
+                }
+
+                BsonDocument userBsonDoc = user.ToBsonDocument<User>();
+                var userFilter = Builders<BsonDocument>.Filter.Eq("UserId", user.UserId);
+                userCollection.ReplaceOne(userFilter, userBsonDoc);
+
+            });
+            await FollowupAsync("Item's Ids have been updated.");
+        }
+
+
+        
         [SlashCommand("quickfix", "Rolls in the new Virtual Items Update.")]
         public async Task HandleVirtualItemsUpdate()
         {
