@@ -56,18 +56,11 @@ namespace ArmadilloGamingDiscordBot
                 _client.Ready += async () =>
                 {
                     Console.WriteLine("Bot is ready!");
-                    //await slashCommands.RegisterCommandsToGuildAsync(810214297207570452, deleteMissing: true); // test server
-                    await slashCommands.RegisterCommandsToGuildAsync(892701424218148905, deleteMissing: true); // ArmadilloGaming Server
+                    await slashCommands.RegisterCommandsToGuildAsync(Storage.DiscordServerId, deleteMissing: true); // current server
                     await slashCommands.RegisterCommandsToGuildAsync(1036338309410082977, deleteMissing: true); // emoji server
                 };
-                // MTAyOTQ5MDQ4NzIzODg3MzExOQ.GcIfwe.p0oue9PezDP0hoQ0IWl-UjKAHVBk_ypRGEZa3Q testbot token
-                //  armadillo bot token "MTAyODc1NTQyNzM4ODgyOTc0Nw.GNH56Z.cwQ1JnziVTT3QZewN-oNodIQv-O6pUHRIygVmg"
-
-                // test server
-                //await _client.LoginAsync(TokenType.Bot, "MTAyOTQ5MDQ4NzIzODg3MzExOQ.GcIfwe.p0oue9PezDP0hoQ0IWl-UjKAHVBk_ypRGEZa3Q");
-
-                // ArmadilloGaming server
-                await _client.LoginAsync(TokenType.Bot, "MTAyODc1NTQyNzM4ODgyOTc0Nw.GNH56Z.cwQ1JnziVTT3QZewN-oNodIQv-O6pUHRIygVmg");
+ 
+                await _client.LoginAsync(TokenType.Bot, Storage.DiscordBotToken);
 
                 await _client.StartAsync();
 
