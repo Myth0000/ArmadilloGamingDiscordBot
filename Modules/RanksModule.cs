@@ -20,15 +20,16 @@ namespace ArmadilloGamingDiscordBot.Modules
         [SlashCommand("level", "Displays the user's current rank.")]
         public async Task HandleRank(SocketUser user = null)
         {
+            await DeferAsync();
             if(user == null) { user = Context.User; }
             try
             {
-                await RespondAsync(embed: BuildRankEmbed());
+                await FollowupAsync(embed: BuildRankEmbed());
             }
             catch (InvalidOperationException ex) // user doesn't exist in database
             {
                 RankSystem.CreateNewUser(mongoClient, user.Id);
-                await RespondAsync(embed: BuildRankEmbed());
+                await FollowupAsync(embed: BuildRankEmbed());
             }
 
             Embed BuildRankEmbed()
@@ -53,6 +54,7 @@ namespace ArmadilloGamingDiscordBot.Modules
         [SlashCommand("leaderboard", "Shows a list of the top 10 highest level members in the server.")]
         public async Task HandleLeaderboard()
         {
+            await DeferAsync();
             var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
             var sortLevel = Builders<BsonDocument>.Sort.Descending("Rank.TotalExp");
             var userBsonList = userCollection.Find(new BsonDocument()).Sort(sortLevel).Limit(10).ToList();
@@ -75,7 +77,7 @@ namespace ArmadilloGamingDiscordBot.Modules
                 .AddField(new EmbedFieldBuilder() { Name=$"Top {users.Count}", Value= topTenHighestLeveledUsers })
                 .WithCurrentTimestamp();
 
-            await RespondAsync(embed: leaderboardEmbed.Build());
+            await FollowupAsync(embed: leaderboardEmbed.Build());
         }
 
 

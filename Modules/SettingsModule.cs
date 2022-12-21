@@ -22,6 +22,7 @@ namespace ArmadilloGamingDiscordBot.Modules
         [SlashCommand("settings", "Displays the current settings of the bot.")]
         public async Task HandleSettings()
         {
+            await DeferAsync();
             var settingsCollection = mongoClient.GetDatabase("SettingsDatabase").GetCollection<BsonDocument>("Settings");
             Settings settings = BsonSerializer.Deserialize<Settings>(settingsCollection.Find<BsonDocument>(new BsonDocument()).First());
 
@@ -33,7 +34,7 @@ namespace ArmadilloGamingDiscordBot.Modules
                 .WithCurrentTimestamp()
                 .Build();
 
-            await RespondAsync(embed: settingsEmbed);
+            await FollowupAsync(embed: settingsEmbed);
         }
 
 

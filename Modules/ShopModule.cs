@@ -20,6 +20,7 @@ namespace ArmadilloGamingDiscordBot.Modules
         [SlashCommand("shop", "A place to shop Virtual Items.")]
         public async Task HandleShop()
         {
+            await DeferAsync();
             string shopItemsDisplay = "";
 
             var selectMenu = new SelectMenuBuilder()
@@ -47,7 +48,7 @@ namespace ArmadilloGamingDiscordBot.Modules
 
             if(selectMenu.Options.Count == 0) { await RespondAsync(embed: shopEmbed); return; } // if there are no items to select in the menu run this
 
-            await RespondAsync(embed: shopEmbed, components: component.Build());
+            await FollowupAsync(embed: shopEmbed, components: component.Build());
         }
 
 
@@ -56,6 +57,7 @@ namespace ArmadilloGamingDiscordBot.Modules
         [ComponentInteraction("ShopSelectMenu")]
         public async Task HandleShopSelectMenu(string[] inputs)
         {
+            await DeferAsync();
             // depending on what the selected item is, 
             foreach (var item in ShopSystem.GetAllItemsFromShop(mongoClient))
             {
@@ -100,7 +102,7 @@ namespace ArmadilloGamingDiscordBot.Modules
                             userCollection.UpdateOne(userFilter, updateArmadilloCoins);
                             userCollection.UpdateOne(userFilter, updateInventory);
 
-                            await RespondAsync($"{Context.User.Mention} found a **{virtualItem.Rarity} {virtualItem.Name}** inside the {item.Name}.");
+                            await FollowupAsync($"{Context.User.Mention} found a **{virtualItem.Rarity} {virtualItem.Name}** inside the {item.Name}.");
                         }
                     }
                 }

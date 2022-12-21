@@ -26,7 +26,8 @@ namespace ArmadilloGamingDiscordBot.Modules
         [SlashCommand("note", "Write down a private note that only you can see.")]
         public async Task HandleNote(string note, bool sendToDM=false)
         {
-            await RespondAsync(note, ephemeral: true);
+            await DeferAsync(ephemeral: true);
+            await FollowupAsync(note, ephemeral: true);
             if (sendToDM)
             {
                 Context.User.SendMessageAsync(note);
