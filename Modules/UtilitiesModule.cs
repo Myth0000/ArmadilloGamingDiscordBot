@@ -16,6 +16,43 @@ namespace ArmadilloGamingDiscordBot.Modules
     {
         HypixelApi hypixel = new HypixelApi("d3d92668-0baa-4194-a006-1d2239e9be18", 300);
 
+
+        [SlashCommand("poll", "creates a poll")]
+        public async Task HandlePoll(string poll, string option1, string option2, string option3=null, string option4=null, string option5=null, string option6=null)
+        {
+            await DeferAsync();
+
+            string optionsMessage = $":one: {option1}\n:two: {option2}\n";
+
+            var message = await FollowupAsync(embed: GetPollEmbed());
+
+            await message.AddReactionsAsync(new Emoji[] { new Emoji("1️⃣"), new Emoji("2️⃣") });
+
+            if (option3 != null) { optionsMessage += $":three: {option3}\n"; modifyMessageWithOption(); await message.AddReactionAsync(new Emoji("3️⃣")); }
+            if (option4 != null) { optionsMessage += $":four: {option4}\n"; modifyMessageWithOption(); await message.AddReactionAsync(new Emoji("4️⃣")); }
+            if (option5 != null) { optionsMessage += $":five: {option5}\n"; modifyMessageWithOption(); await message.AddReactionAsync(new Emoji("5️⃣")); }
+            if (option6 != null) { optionsMessage += $":six: {option6}\n"; modifyMessageWithOption(); await message.AddReactionAsync(new Emoji("6️⃣")); }
+
+            async void modifyMessageWithOption()
+            {
+                await message.ModifyAsync(msg =>
+                {
+                    msg.Embed = GetPollEmbed();
+                });
+            }
+
+            Embed GetPollEmbed()
+            {
+                return new EmbedBuilder()
+                .WithAuthor("Poll", iconUrl: Context.User.GetAvatarUrl() ?? Context.User.GetDefaultAvatarUrl())
+                .AddField(poll, optionsMessage)
+                .WithFooter($"Poll created by {Context.User.Username}#{Context.User.Discriminator}")
+                .Build();
+            }
+            
+        }
+
+
         [SlashCommand("armadillo", "Shows a cute picture of an Armadillo.")]
         public async Task HandleArmadillo()
         {

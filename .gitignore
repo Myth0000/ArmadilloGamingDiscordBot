@@ -364,3 +364,6 @@ FodyWeavers.xsd
 
 # config file that stores sensitive info
 config.json
+
+# Storage.cs contains which token/database i'll be using during testing
+Storage.cs
