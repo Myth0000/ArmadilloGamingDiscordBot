@@ -21,7 +21,7 @@ namespace ArmadilloGamingDiscordBot
 
         // stuff
         public static ulong ArmadilloGamingGuildId { get { return 892701424218148905; } }
-        public static ulong DiscordBotTestGuildId { get { return 810214297207570452; } }
+        public static ulong DiscordBotTestGuildId { get { return 1036338309410082977; } }
 
         // Emotes
         public static string ArmadilloCoinEmoteId { get { return "<:ArmadilloCoin:1036766409671327825>"; } }

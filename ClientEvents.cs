@@ -42,5 +42,15 @@ namespace ArmadilloGamingDiscordBot
                 RankSystem.CreateNewUser(mongoClient, message.Author.Id);
             }
         }
+
+
+        public async Task UserLeftGuild(SocketGuild guild, SocketUser user)
+        {
+            // Deletes users who leave their guild from the database
+            var userCollection = mongoClient.GetDatabase("UserDatabase").GetCollection<BsonDocument>("User");
+            var findUserFilter = Builders<BsonDocument>.Filter.Eq("UserId", user.Id);
+
+            userCollection.DeleteOne(findUserFilter);
+        }
     }
 }
